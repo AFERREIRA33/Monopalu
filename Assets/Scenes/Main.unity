@@ -263,6 +263,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943172997624020005, guid: 894865137f1ff244e956da4b747711df, type: 3}
+      propertyPath: m_Name
+      value: Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267037214567568579, guid: 894865137f1ff244e956da4b747711df, type: 3}
+      propertyPath: m_Name
+      value: Station(2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267037215163502251, guid: 894865137f1ff244e956da4b747711df, type: 3}
+      propertyPath: m_Name
+      value: Station(1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267037215853605989, guid: 894865137f1ff244e956da4b747711df, type: 3}
+      propertyPath: m_Name
+      value: Station
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 894865137f1ff244e956da4b747711df, type: 3}
