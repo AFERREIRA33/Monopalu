@@ -19,6 +19,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            Move(1);
+        }
     }
 
     public void Move(int rollnumber)
