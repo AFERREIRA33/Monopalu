@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7448338512351073784}
   - component: {fileID: 8967030391295299189}
+  - component: {fileID: -1822542616856840512}
   m_Layer: 0
   m_Name: Joseph
   m_TagString: Untagged
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1822542616856840512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920731657157907518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff454c95bc6531f40939a5e1a061c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxs: []
+  movespeed: 1
+  boxIndex: 0
