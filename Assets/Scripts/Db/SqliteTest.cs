@@ -36,9 +36,6 @@ public class SqliteTest : MonoBehaviour
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS BoardPlayer ( board_id INTEGER, user_id INTEGER, FOREIGN KEY(board_id) REFERENCES Board(board_id), FOREIGN KEY(board_id) REFERENCES Board(board_id))");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER)");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS BoardBox ( board_id INTEGER, box_id INTEGER, FOREIGN KEY(board_id) REFERENCES Board(board_id), FOREIGN KEY(box_id) REFERENCES Box(box_id))");
-        //ExecQuery(dbcon, "INSERT INTO Card (card_name, card_action, card_desc, card_value) VALUES ('a', 'zction', 'desc', 7)");
-
-
         // Close connection
         dbcon.Close();
 
@@ -92,8 +89,28 @@ public class SqliteTest : MonoBehaviour
     {
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
-       string[][] result =  ExecQueryWithOutput(dbcon, ("Select " + String.Join(", ", column) + " FROM " + table + " " + condition), column.Length);
-       dbcon.Close();
-       return result;
+        
+        string[][] result =  ExecQueryWithOutput(dbcon, ("Select " + String.Join(", ", column) + " FROM " + table + " " + condition), column.Length);
+        dbcon.Close();
+        return result;
     }
+
+    //Insert element in a table
+    public void InsertInto(string table, string[] column, string[] value)
+    {
+        IDbConnection dbcon = new SqliteConnection(this.connection);
+        dbcon.Open();
+        string[][] result = ExecQueryWithOutput(dbcon, ("INSERT INTO " + table + " (" + String.Join(", ", column) + ") VALUES (" + String.Join(", ", value) +")"), column.Length);
+        dbcon.Close();
+    }
+    
+    // Delete row in a table
+    public void DeleteElement(string table, string condition)
+    {
+        IDbConnection dbcon = new SqliteConnection(this.connection);
+        dbcon.Open();
+        ExecQuery(dbcon, "DELETE FROM " + table +" "+ condition);
+        dbcon.Close();
+    }
+
 }
