@@ -23,7 +23,7 @@ public class SqliteTest : MonoBehaviour
     void Start()
     {
         // Create database
-        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "test";
+        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
 
         // Open connection
         IDbConnection dbcon = new SqliteConnection(this.connection);
