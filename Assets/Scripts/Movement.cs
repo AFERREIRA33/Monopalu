@@ -6,7 +6,6 @@ public class Movement : MonoBehaviour
 {
     public GameObject[] boxs;
 
-    public float movespeed = 1f;
 
     public int boxIndex = 0;
     // Start is called before the first frame update

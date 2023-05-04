@@ -6,34 +6,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject[] allPlayer;
-    public bool turn = true;
+    public int PlayerLocation = 0;
+    private GameObject Player;
+    public GameObject[] boxs;
     // Start is called before the first frame update
     void Start()
     {
-        allPlayer = GameObject.FindGameObjectsWithTag("Player").OrderBy(go => go.name).ToArray();
-        allPlayer[0].GetComponent<playerTurn>().enabled = false;
+        boxs = GameObject.FindGameObjectsWithTag("Case");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        int count = 0;
-        foreach(GameObject player in allPlayer)
-        {
-            if(player.name == "player")
-            {
-                player.GetComponent<playerTurn>().enabled = true;
-            } else if(!turn)
-            {
-                Debug.Log(count);
-                count++;
-            }
-        }
-        if (!turn)
-        {
-            turn = true;
-            allPlayer[0].GetComponent<playerTurn>().enabled = false;
-        }
+
     }
 }
