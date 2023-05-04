@@ -19,14 +19,13 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
-        {
-            Move(1);
-        }
+        
     }
 
     public void Move(int rollnumber)
     {
+        // Move to the choosen index
+        
         if (boxIndex + rollnumber > 39)
         {
             while (boxIndex <= 39)

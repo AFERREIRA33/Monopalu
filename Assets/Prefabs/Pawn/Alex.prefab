@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143044918616303931}
   - component: {fileID: 3898053845660818536}
+  - component: {fileID: 4797222028168985655}
   m_Layer: 0
   m_Name: Alex
   m_TagString: Untagged
@@ -84,13 +85,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4797222028168985655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345377948905194289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff454c95bc6531f40939a5e1a061c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxs: []
+  movespeed: 1
+  boxIndex: 0
 --- !u!114 &8243896304699124628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3114059078051407440}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff454c95bc6531f40939a5e1a061c5a4, type: 3}
