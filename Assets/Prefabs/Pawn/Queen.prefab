@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1720512794179463868}
   - component: {fileID: 8155312087123876966}
   - component: {fileID: 1788754815180191376}
+  - component: {fileID: 946142352192091113}
   m_Layer: 0
   m_Name: Queen
   m_TagString: Untagged
@@ -100,3 +101,16 @@ MonoBehaviour:
   boxs: []
   movespeed: 1
   boxIndex: 0
+--- !u!114 &946142352192091113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138823528343553284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f65fd9d37134eb88b50524a108e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
