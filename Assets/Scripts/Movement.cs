@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
 
     public void Move(int rollnumber)
     {
+        // Move to the choosen index
         
         if (boxIndex + rollnumber > 39)
         {

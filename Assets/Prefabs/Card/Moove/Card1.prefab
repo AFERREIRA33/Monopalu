@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 1
+  oldImage: {fileID: 7989435185797492071}
 --- !u!61 &5164347550935816502
 BoxCollider2D:
   m_ObjectHideFlags: 0

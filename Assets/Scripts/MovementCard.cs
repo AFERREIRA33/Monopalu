@@ -9,8 +9,6 @@ public class MovementCard : MonoBehaviour
 
     public int number;
 
-    public Image oldImage;
-
     private GameObject Player;
 
     private Vector2 startposition;
@@ -25,6 +23,7 @@ public class MovementCard : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // call Movement function
         MoveNumber();
     }
     public void MoveNumber()
@@ -37,6 +36,7 @@ public class MovementCard : MonoBehaviour
 
     public void OnMouseOver()
     {
+        // get the object to move up
 
         if (!up)
         {
@@ -47,6 +47,7 @@ public class MovementCard : MonoBehaviour
 
     private void OnMouseExit()
     {
+        // get the object to return to it start position
         if (up)
         {
             Debug.Log(startposition);
