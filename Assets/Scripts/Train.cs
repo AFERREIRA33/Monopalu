@@ -15,9 +15,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         
     }
-}
+    public void dest()
+    {
 
-public void dest()
-{
-
+    }
 }
