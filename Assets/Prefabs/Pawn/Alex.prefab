@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 143044918616303931}
   - component: {fileID: 3898053845660818536}
   - component: {fileID: 4797222028168985655}
+  - component: {fileID: 3661337738447716946}
   m_Layer: 0
   m_Name: Alex
   m_TagString: Untagged
@@ -100,6 +101,19 @@ MonoBehaviour:
   boxs: []
   movespeed: 1
   boxIndex: 0
+--- !u!114 &3661337738447716946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345377948905194289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f65fd9d37134eb88b50524a108e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
 --- !u!114 &8243896304699124628
 MonoBehaviour:
   m_ObjectHideFlags: 0

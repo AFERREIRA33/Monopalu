@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6702753741460390190}
   - component: {fileID: 549206253977377803}
   - component: {fileID: -189140105761817769}
+  - component: {fileID: 748651805264885583}
   m_Layer: 0
   m_Name: Luc
   m_TagString: Untagged
@@ -100,3 +101,16 @@ MonoBehaviour:
   boxs: []
   movespeed: 1
   boxIndex: 0
+--- !u!114 &748651805264885583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290676133980861151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f65fd9d37134eb88b50524a108e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0

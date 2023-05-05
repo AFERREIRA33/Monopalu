@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7448338512351073784}
   - component: {fileID: 8967030391295299189}
   - component: {fileID: -1822542616856840512}
+  - component: {fileID: -6044894548652322315}
   m_Layer: 0
   m_Name: Joseph
   m_TagString: Untagged
@@ -100,3 +101,16 @@ MonoBehaviour:
   boxs: []
   movespeed: 1
   boxIndex: 0
+--- !u!114 &-6044894548652322315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920731657157907518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f65fd9d37134eb88b50524a108e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
