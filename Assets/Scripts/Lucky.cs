@@ -18,7 +18,7 @@ public class Lucky : MonoBehaviour
     {
         if (Input.GetKeyDown("r"))
         {
-            LuckyForward();
+            GoJail();
         }
     }
 
@@ -54,5 +54,44 @@ public class Lucky : MonoBehaviour
         }
         index = index + 3;
         Player.transform.position = boxs[index].transform.position;
+    }
+
+    public void GoJail()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.position = boxs[10].transform.position;
+    }
+
+    public void WarpTrain()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+    }
+
+    public void WarpCivilization()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.position = boxs[11].transform.position;
+        Debug.Log("Ajouter gain d'argent (si passage par la case départ)");
+    }
+
+    public void WarpZelda()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.position = boxs[24].transform.position;
+        Debug.Log("Ajouter gain d'argent (si passage par la case départ)");
+    }
+
+    public void WarpStart()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.position = boxs[0].transform.position;
+        Debug.Log("Ajouter gain d'argent)");
+    }
+
+    public void WarpKH()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.position = boxs[39].transform.position;
     }
 }
