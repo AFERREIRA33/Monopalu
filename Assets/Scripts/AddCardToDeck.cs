@@ -34,8 +34,8 @@ public class AddCardToDeck : MonoBehaviour
         Debug.Log(a.name);
         Debug.Log(btn.name);
     }
-    public void test()
+    public void DeleteCard(GameObject a)
     {
-        Debug.Log("yo");
+
     }
 }

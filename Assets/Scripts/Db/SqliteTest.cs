@@ -75,7 +75,7 @@ public class SqliteTest : MonoBehaviour
 
     }
     
-    //Delet all the content of all Table
+    //Delete all the content of all Table
     private void ClearTable(IDbConnection dbcon)
     {
         foreach (string table in tableName)
@@ -85,6 +85,14 @@ public class SqliteTest : MonoBehaviour
     }
 
     // Select an element in the database
+    /*
+    - column : all the column that you want to have
+            exemple : "user_id" is a column
+    - table : the name of the table containing your data
+            exemple : "User" is a table
+    - condition : If you want to add parameter
+            exemple "WHERE user_id = 4" with this he return only the line where user_id = 4
+     */
     public string[][] Select(string[] column, string table, string condition = "")
     {
         IDbConnection dbcon = new SqliteConnection(this.connection);
@@ -96,6 +104,14 @@ public class SqliteTest : MonoBehaviour
     }
 
     //Insert element in a table
+    /*
+    - table : the name of the table that you want to add data
+            exemple : "User" is a table
+    - column : all the column of element (only the AUTOINCREMENT is not necessary)
+            exemple : "user_id" is a column
+    - value : all the value for wich column, need the same number of item and he need to have "''"
+            exemple "'toto'"
+     */
     public void InsertInto(string table, string[] column, string[] value)
     {
         IDbConnection dbcon = new SqliteConnection(this.connection);
@@ -103,8 +119,14 @@ public class SqliteTest : MonoBehaviour
         string[][] result = ExecQueryWithOutput(dbcon, ("INSERT INTO " + table + " (" + String.Join(", ", column) + ") VALUES (" + String.Join(", ", value) +")"), column.Length);
         dbcon.Close();
     }
-    
+
     // Delete row in a table
+    /*
+    - table : the name of the table that you want to delete data
+            exemple : "User" is a table
+    - condition : If you want to add parameter
+            exemple "WHERE user_id = 4" with this he return only the line where user_id = 4
+     */
     public void DeleteElement(string table, string condition)
     {
         IDbConnection dbcon = new SqliteConnection(this.connection);
