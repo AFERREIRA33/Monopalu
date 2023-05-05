@@ -11,7 +11,7 @@ public class MovementCard : MonoBehaviour
 
     private GameObject Player;
 
-    private Vector2 startposition;
+    private Vector3 startposition;
 
     private bool up = false;
 
@@ -19,6 +19,7 @@ public class MovementCard : MonoBehaviour
     void Start()
     {
         startposition = transform.position;
+        startposition.z = 1;
     }
 
     private void OnMouseDown()
@@ -40,7 +41,7 @@ public class MovementCard : MonoBehaviour
 
         if (!up)
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y+0.5f);
+            transform.position = new Vector3(transform.position.x, transform.position.y+0.5f, -4);
             up = true;
         }
     }
