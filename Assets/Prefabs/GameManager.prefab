@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 666613836182665890}
-  - component: {fileID: 666613836182665891}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -30,20 +29,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &666613836182665891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666613836182665888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c9ed9be62f24a644a275b407f4996f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nbPlayer: 4
-  player: {fileID: 5526050518081763103, guid: 48a780a5b07f24b4eac8caa41610fd51, type: 3}
-  IAPlayer: {fileID: 3370037782252718778, guid: 3ae79091e4c3cb345b74cbcb0fcdd4d9, type: 3}
