@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class Properties : MonoBehaviour
 {
+    public int[] dlc;
     public int[] price;
-    public GameObject Player;
     public Sprite[] spritetable;
     public Image oldImage;
     public GameObject[] boxs;
     public GameObject button1;
     public GameObject button2;
     private int globalindex;
-    
+    private bool isOncase = true;
+    private GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,10 @@ public class Properties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnProperties();
+        if (!isOncase)
+        {
+            SpawnProperties();
+        }
     }
 
     public void SpawnProperties()
@@ -39,6 +44,7 @@ public class Properties : MonoBehaviour
                 button2.SetActive(true);
                 oldImage.sprite = spritetable[index];
                 globalindex = index;
+                isOncase = true;
             }
             index++;
         }
@@ -60,6 +66,11 @@ public class Properties : MonoBehaviour
         oldImage.enabled = false;
         button1.SetActive(false);
         button2.SetActive(false);
+    }
+
+    public void SetIsOnCase(bool cas)
+    {
+        isOncase = cas;
     }
 
 

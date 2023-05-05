@@ -8,10 +8,13 @@ public class Movement : MonoBehaviour
 
     public float movespeed = 1f;
 
+    public GameObject image;
+
     public int boxIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
+        image = GameObject.FindGameObjectWithTag("ImageCenter");
         boxs = GameObject.FindGameObjectsWithTag("Case");
         transform.position = boxs[boxIndex].transform.position;
     }
@@ -38,5 +41,7 @@ public class Movement : MonoBehaviour
         boxIndex += rollnumber;
 
         transform.position = boxs[boxIndex].transform.position;
+        image.GetComponent<Properties>().SetIsOnCase(false);
+
     }
 }

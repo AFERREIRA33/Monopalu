@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2026346938129085426}
   m_Layer: 0
   m_Name: King
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxs: []
   movespeed: 1
+  image: {fileID: 0}
   boxIndex: 0
 --- !u!114 &-2026346938129085426
 MonoBehaviour:
