@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 
 
     public GameObject image;
+    public GameObject pos;
 
     public int boxIndex = 0;
     // Start is called before the first frame update
@@ -38,8 +39,9 @@ public class Movement : MonoBehaviour
             boxIndex = 0;
         }
         boxIndex += rollnumber;
-
+        pos = boxs[boxIndex];
         transform.position = boxs[boxIndex].transform.position;
+
         image.GetComponent<Properties>().SetIsOnCase(false);
 
     }
