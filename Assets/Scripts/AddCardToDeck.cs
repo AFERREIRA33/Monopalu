@@ -10,6 +10,8 @@ public class AddCardToDeck : MonoBehaviour
     public Button buttonDeck;
     private Vector3 buttonPos;
     public List<Button> buttonOfDeck;
+    public GameObject Database;
+    private string[] nameForButton= new string[] { "Card1", "Card2", "Card3", "Card4", "Card5", "Card6", "Card7", "Card8", "Card9", "Card10", "Card11", "Card12", };
     // Start is called before the first frame update
     void Start()
     {
@@ -35,20 +37,22 @@ public class AddCardToDeck : MonoBehaviour
         buttonOfDeck.Add(btn);
         RefreshDeck();
     }
+
+    //Delete the selected button 
     public void DeleteCard(GameObject a)
     {
         Destroy(a);
+        Debug.Log(buttonOfDeck.Count);
     }
-    private void RefreshDeck()
+
+    // center the button after a modification
+    public void RefreshDeck()
     {
         List<Button> newList = new List<Button>();
         buttonPos = new Vector3(90f, -20f, 0f);
         foreach (Button b in buttonOfDeck)
         {
-            if (b.IsDestroyed())
-            {
-            }
-            else
+            if (!b.IsDestroyed())
             {
                 b.transform.localPosition = buttonPos;
                 buttonPos.y += -30;
@@ -56,5 +60,52 @@ public class AddCardToDeck : MonoBehaviour
             }
         }
         buttonOfDeck = newList;
+        Debug.Log(buttonOfDeck.Count);
+    }
+
+
+    public void SaveData()
+    {
+        Database.GetComponent<SqliteTest>().DeleteElement("UserCard", "WHERE user_id = 1");
+        List<string> btnName = new List<string>();
+        List<string[]> respond = new List<string[]>();
+        foreach (var btn in buttonOfDeck)
+        {
+            btnName.Add("1");
+            btnName.Add(btn.name);
+            respond.Add(btnName.ToArray());
+            btnName.RemoveRange(0, 2);
+        }
+        Database.GetComponent<SqliteTest>().InsertInto("UserCard", new string[] { "user_id", "card_id" }, respond.ToArray());
+    }
+
+    public void GetDeck()
+    {
+        RefreshDeck();
+        string[][] playerDeck = Database.GetComponent<SqliteTest>().Select(new string[] {"card_id"}, "UserCard", " WHERE user_id = 1");
+        buttonPos = new Vector3(90f, -20f, 0f);
+        foreach (var card in playerDeck)
+        {
+            Button btn = GameObject.Instantiate(buttonDeck);
+            btn.name = card[0];
+            int val = int.Parse(card[0])+1;
+            btn.GetComponentInChildren<TextMeshProUGUI>().text = val.ToString();
+            btn.transform.SetParent(deck.transform, false);
+            btn.transform.localPosition = buttonPos;
+            buttonPos.y += -30;
+            buttonOfDeck.Add(btn);
+        }
+    }
+
+    public void DestroyDeck()
+    {
+        Debug.Log("toto");
+        RefreshDeck();
+        foreach (var b in buttonOfDeck)
+        {
+            Destroy(b.gameObject);
+        }
+        buttonOfDeck.RemoveRange(0, buttonOfDeck.Count);
+
     }
 }
