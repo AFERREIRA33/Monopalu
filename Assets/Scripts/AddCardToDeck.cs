@@ -9,6 +9,7 @@ public class AddCardToDeck : MonoBehaviour
     public GameObject deck;
     public Button buttonDeck;
     private Vector3 buttonPos;
+    public List<Button> buttonOfDeck;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +23,38 @@ public class AddCardToDeck : MonoBehaviour
     }
 
     //Create the Button for delete the card from the deck
-    public void AddCard(GameObject a)
+    public void AddCard(GameObject clickedButton)
     {
 
         Button btn = GameObject.Instantiate(buttonDeck);
-        btn.name = a.name;
-        btn.GetComponentInChildren<TextMeshProUGUI>().text = a.GetComponentInChildren<TextMeshProUGUI>().text;
+        btn.name = clickedButton.name;
+        btn.GetComponentInChildren<TextMeshProUGUI>().text = clickedButton.GetComponentInChildren<TextMeshProUGUI>().text;
         btn.transform.SetParent(deck.transform, false);
         btn.transform.localPosition = buttonPos;
         buttonPos.y += -30;
-        Debug.Log(a.name);
-        Debug.Log(btn.name);
+        buttonOfDeck.Add(btn);
+        RefreshDeck();
     }
     public void DeleteCard(GameObject a)
     {
-
+        Destroy(a);
+    }
+    private void RefreshDeck()
+    {
+        List<Button> newList = new List<Button>();
+        buttonPos = new Vector3(90f, -20f, 0f);
+        foreach (Button b in buttonOfDeck)
+        {
+            if (b.IsDestroyed())
+            {
+            }
+            else
+            {
+                b.transform.localPosition = buttonPos;
+                buttonPos.y += -30;
+                newList.Add(b);
+            }
+        }
+        buttonOfDeck = newList;
     }
 }
