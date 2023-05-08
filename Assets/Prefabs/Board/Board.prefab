@@ -1306,7 +1306,7 @@ Transform:
   - {fileID: 5484248694064674999}
   - {fileID: 3715555770709904213}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2201612497435813732
 GameObject:
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 5758073955525217559}
   - component: {fileID: 1454628750215032216}
   m_Layer: 0
-  m_Name: Money
+  m_Name: Money_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6051,7 +6051,7 @@ GameObject:
   - component: {fileID: 4928980490531498887}
   - component: {fileID: 4630229737044436210}
   m_Layer: 0
-  m_Name: 1_2
+  m_Name: 1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
