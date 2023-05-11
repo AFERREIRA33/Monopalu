@@ -51,7 +51,7 @@ public class MovementCard : MonoBehaviour
         // get the object to return to it start position
         if (up)
         {
-            Debug.Log(startposition);
+            
             transform.position = startposition;
             up = false;
         }

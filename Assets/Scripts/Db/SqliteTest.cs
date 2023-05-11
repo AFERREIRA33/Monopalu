@@ -34,7 +34,7 @@ public class SqliteTest : MonoBehaviour
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS UserCard ( user_id INTEGER, card_id INTEGER, FOREIGN KEY(user_id) REFERENCES User(user_id), FOREIGN KEY(card_id) REFERENCES Card(card_id))");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER)");
         // Close connection
-        // ClearTable(dbcon);
+        ClearTable(dbcon);
         dbcon.Close();
         SetDB();
 

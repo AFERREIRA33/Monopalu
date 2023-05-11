@@ -9,7 +9,7 @@ public class Money : MonoBehaviour
     void Start()
     {
         money = 148000;
-        Debug.Log(money);
+        
     }
 
     // Update is called once per frame
@@ -26,6 +26,11 @@ public class Money : MonoBehaviour
     public void AddMoney(int moneytoadd)
     {
         money += moneytoadd;
-        Debug.Log(money);
+        
+    }
+
+    public int GetMoney()
+    {
+        return money;
     }
 }
