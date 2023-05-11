@@ -53,7 +53,7 @@ public class Properties : MonoBehaviour
     public void BuyPropety()
     {
         Debug.Log(globalindex);
-        Player.GetComponent<Money>().BuyProperties(price[globalindex]);
+        Player.GetComponent<Money>().Substract(price[globalindex]);
         oldImage.enabled = false;
         button1.SetActive(false);
         button2.SetActive(false);
