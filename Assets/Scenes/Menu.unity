@@ -547,10 +547,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
@@ -558,7 +562,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1822510212}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1822510212}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
@@ -570,11 +582,23 @@ PrefabInstance:
       value: GetDeck
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: RefreshDeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: AddCardToDeck, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: AddCardToDeck, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046837228516588569, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3372273715128445619, guid: 29dcb139533cd7945a8090c9aff0b15d, type: 3}
