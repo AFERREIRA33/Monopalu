@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     public GameObject image;
     public GameObject pos;
+    public GameObject jail;
 
     public int boxIndex = 0;
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Movement : MonoBehaviour
         image = GameObject.FindGameObjectWithTag("ImageCenter");
         boxs = GameObject.FindGameObjectsWithTag("Case");
         transform.position = boxs[boxIndex].transform.position;
+
     }
 
     // Update is called once per frame
@@ -41,8 +43,12 @@ public class Movement : MonoBehaviour
         boxIndex += rollnumber;
         pos = boxs[boxIndex];
         transform.position = boxs[boxIndex].transform.position;
-
         image.GetComponent<Properties>().SetIsOnCase(false);
+
+        if (pos == jail)
+        {
+            transform.position = boxs[10].transform.position;
+        }
 
     }
 }
