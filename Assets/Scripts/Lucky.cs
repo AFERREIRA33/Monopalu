@@ -11,6 +11,8 @@ public class Lucky : MonoBehaviour
     void Start()
     {
         boxs = GameObject.FindGameObjectsWithTag("Case");
+        Player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -25,7 +27,6 @@ public class Lucky : MonoBehaviour
     public void LuckyBack()
     {
         int index = 0;
-        Player = GameObject.FindGameObjectWithTag("Player");
 
         foreach (GameObject i in boxs)
         {
@@ -42,7 +43,7 @@ public class Lucky : MonoBehaviour
     public void LuckyForward()
     {
         int index = 0;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
 
         foreach (GameObject i in boxs)
         {
@@ -58,40 +59,70 @@ public class Lucky : MonoBehaviour
 
     public void GoJail()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[10].transform.position;
     }
 
     public void WarpTrain()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-
+        Debug.Log("Faut ajoutez le systéme");
     }
 
     public void WarpCivilization()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[11].transform.position;
-        Debug.Log("Ajouter gain d'argent (si passage par la case départ)");
     }
 
     public void WarpZelda()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[24].transform.position;
-        Debug.Log("Ajouter gain d'argent (si passage par la case départ)");
     }
 
     public void WarpStart()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[0].transform.position;
-        Debug.Log("Ajouter gain d'argent)");
+        GetComponent<Money>().AddMoney(20000);
     }
 
     public void WarpKH()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[39].transform.position;
+    }
+
+    public void WorldCupLoL()
+    {
+        GetComponent<Money>().AddMoney(10000);
+    }
+
+    public void Smach()
+    {
+        GetComponent<Money>().AddMoney(100);
+    }
+
+    public void Dividend()
+    {
+        GetComponent<Money>().AddMoney(5000);
+    }
+
+    public void ExitJail()
+    {
+        Debug.Log("Faut ajoutez le systéme");
+    }
+
+    public void Penalty()
+    {
+        GetComponent<Money>().Substract(1500);
+    }
+    public void Collector()
+    {
+        GetComponent<Money>().Substract(15000);
+
+    }
+    public void Cheat()
+    {
+        GetComponent<Money>().Substract(2000);
+    }
+    public void Sell()
+    {
+        GetComponent<Money>().AddMoney(15000);
     }
 }

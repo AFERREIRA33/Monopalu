@@ -9,22 +9,22 @@ public class Chest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         boxs = GameObject.FindGameObjectsWithTag("Case");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("b"))
         {
-            ChestBack();
+            GoJail();
         }
     }
 
     public void ChestBack()
     {
         int index = 0;
-        Player = GameObject.FindGameObjectWithTag("Player");
 
         foreach (GameObject i in boxs)
         {
@@ -41,8 +41,6 @@ public class Chest : MonoBehaviour
     public void ChestForward()
     {
         int index = 0;
-        Player = GameObject.FindGameObjectWithTag("Player");
-
         foreach (GameObject i in boxs)
         {
             if (i.transform.position == Player.transform.position)
@@ -57,14 +55,65 @@ public class Chest : MonoBehaviour
 
     public void GoJail()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
         Player.transform.position = boxs[10].transform.position;
     }
     
     public void WarpStart()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = boxs[0].transform.position;
-        Debug.Log("Ajouter gain d'argent)");
+        GetComponent<Money>().AddMoney(20000);
+    }
+    public void ErrorBank()
+    {
+        GetComponent<Money>().AddMoney(20000);
+    }
+    public void Doc()
+    {
+        GetComponent<Money>().Substract(5000);
+    }
+    public void SellConsol()
+    {
+        GetComponent<Money>().AddMoney(5000);
+    }
+    public void ExitJail()
+    {
+        Debug.Log("Faut ajoutez le systéme");
+    }
+    public void Income()
+    {
+        GetComponent<Money>().AddMoney(10000);
+    }
+    public void Birthday()
+    {
+        Debug.Log("Faut ajoutez le systéme");
+    }
+    public void Contribution()
+    {
+        GetComponent<Money>().AddMoney(2000);
+    }
+    public void intrest()
+    {
+        GetComponent<Money>().AddMoney(2500);
+    }
+    public void Insurance()
+    {
+        GetComponent<Money>().Substract(5000);
+    }
+    public void Penalty()
+    {
+        GetComponent<Money>().Substract(1000);
+    }
+    public void WarpTrain()
+    {
+        Debug.Log("Faut ajoutez le systéme");
+    }
+    public void WinPrice()
+    {
+        GetComponent<Money>().AddMoney(1000);
+    }
+    public void Legacy()
+    {
+        GetComponent<Money>().AddMoney(10000);
     }
 }

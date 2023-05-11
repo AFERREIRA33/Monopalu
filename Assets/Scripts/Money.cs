@@ -17,9 +17,9 @@ public class Money : MonoBehaviour
     {
     }
 
-    public void BuyProperties(int propetiesprize)
+    public void Substract(int moneysubstract)
     {
-        money -= propetiesprize;
+        money -= moneysubstract;
         Debug.Log(money);
     }
 
