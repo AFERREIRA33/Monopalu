@@ -2,29 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lucky : MonoBehaviour
-
+public class Chest : MonoBehaviour
 {
     public GameObject[] boxs;
     private GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
-        boxs = GameObject.FindGameObjectsWithTag("Case");
         Player = GameObject.FindGameObjectWithTag("Player");
-
+        boxs = GameObject.FindGameObjectsWithTag("Case");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("b"))
         {
             GoJail();
         }
     }
 
-    public void LuckyBack()
+    public void ChestBack()
     {
         int index = 0;
 
@@ -36,15 +34,13 @@ public class Lucky : MonoBehaviour
             }
             index++;
         }
-        index = index - 3;
+        index = index - 2;
             Player.transform.position = boxs[index].transform.position;
     }
 
-    public void LuckyForward()
+    public void ChestForward()
     {
         int index = 0;
-        
-
         foreach (GameObject i in boxs)
         {
             if (i.transform.position == Player.transform.position)
@@ -53,76 +49,71 @@ public class Lucky : MonoBehaviour
             }
             index++;
         }
-        index = index + 3;
+        index = index + 5;
         Player.transform.position = boxs[index].transform.position;
     }
 
     public void GoJail()
     {
+        
         Player.transform.position = boxs[10].transform.position;
     }
-
-    public void WarpTrain()
-    {
-        Debug.Log("Faut ajoutez le systéme");
-    }
-
-    public void WarpCivilization()
-    {
-        Player.transform.position = boxs[11].transform.position;
-    }
-
-    public void WarpZelda()
-    {
-        Player.transform.position = boxs[24].transform.position;
-    }
-
+    
     public void WarpStart()
     {
         Player.transform.position = boxs[0].transform.position;
         GetComponent<Money>().AddMoney(20000);
     }
-
-    public void WarpKH()
+    public void ErrorBank()
     {
-        Player.transform.position = boxs[39].transform.position;
+        GetComponent<Money>().AddMoney(20000);
     }
-
-    public void WorldCupLoL()
+    public void Doc()
     {
-        GetComponent<Money>().AddMoney(10000);
+        GetComponent<Money>().Substract(5000);
     }
-
-    public void Smach()
-    {
-        GetComponent<Money>().AddMoney(100);
-    }
-
-    public void Dividend()
+    public void SellConsol()
     {
         GetComponent<Money>().AddMoney(5000);
     }
-
     public void ExitJail()
     {
         Debug.Log("Faut ajoutez le systéme");
     }
-
+    public void Income()
+    {
+        GetComponent<Money>().AddMoney(10000);
+    }
+    public void Birthday()
+    {
+        Debug.Log("Faut ajoutez le systéme");
+    }
+    public void Contribution()
+    {
+        GetComponent<Money>().AddMoney(2000);
+    }
+    public void intrest()
+    {
+        GetComponent<Money>().AddMoney(2500);
+    }
+    public void Insurance()
+    {
+        GetComponent<Money>().Substract(5000);
+    }
     public void Penalty()
     {
-        GetComponent<Money>().Substract(1500);
+        GetComponent<Money>().Substract(1000);
     }
-    public void Collector()
+    public void WarpTrain()
     {
-        GetComponent<Money>().Substract(15000);
-
+        Debug.Log("Faut ajoutez le systéme");
     }
-    public void Cheat()
+    public void WinPrice()
     {
-        GetComponent<Money>().Substract(2000);
+        GetComponent<Money>().AddMoney(1000);
     }
-    public void Sell()
+    public void Legacy()
     {
-        GetComponent<Money>().AddMoney(15000);
+        GetComponent<Money>().AddMoney(10000);
     }
 }
