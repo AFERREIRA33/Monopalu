@@ -8,10 +8,16 @@ public class Movement : MonoBehaviour
 
 
     public GameObject image;
+    public GameObject start;
+    public GameObject[] taxe;
+    public GameObject Destination;
+    public GameObject HUD;
     public GameObject pos;
     public GameObject jail;
+    public GameObject[] station;
 
     public int boxIndex = 0;
+    public int befor = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +34,10 @@ public class Movement : MonoBehaviour
     }
 
     public void Move(int rollnumber)
-    {
-        // Move to the choosen index
-        
+    {   
         if (boxIndex + rollnumber > 39)
         {
+            befor = boxIndex - rollnumber;
             while (boxIndex <= 39)
             {
                 boxIndex++;
@@ -40,7 +45,9 @@ public class Movement : MonoBehaviour
             }
             boxIndex = 0;
         }
+        
         boxIndex += rollnumber;
+        
         pos = boxs[boxIndex];
         transform.position = boxs[boxIndex].transform.position;
         image.GetComponent<Properties>().SetIsOnCase(false);
@@ -50,5 +57,30 @@ public class Movement : MonoBehaviour
             transform.position = boxs[10].transform.position;
         }
 
+        if (boxIndex < befor)
+        {
+            GetComponent<Money>().AddMoney(20000);
+        }
+
+        if (pos == start)
+        {
+            GetComponent<Money>().AddMoney(20000);
+        }
+
+        foreach (var item in station)
+        {
+            if (pos == item)
+            {
+                Destination.SetActive(true);
+            }
+        }
+        foreach (var item in taxe)
+        {
+            if (pos == item)
+            {
+                GetComponent<Money>().Substract(20000);
+                Debug.Log("T'es povre");
+            }
+        }
     }
 }
