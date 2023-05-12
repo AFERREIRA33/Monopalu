@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
         
         pos = boxs[boxIndex];
         transform.position = boxs[boxIndex].transform.position;
-        image.GetComponent<Properties>().SetIsOnCase(false);
+        image.GetComponent<Properties>().SpawnProperties();
 
         if (pos == jail)
         {
@@ -79,7 +79,6 @@ public class Movement : MonoBehaviour
             if (pos == item)
             {
                 GetComponent<Money>().Substract(20000);
-                Debug.Log("T'es povre");
             }
         }
     }

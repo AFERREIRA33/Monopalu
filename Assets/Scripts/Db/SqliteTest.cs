@@ -278,7 +278,4 @@ public class SqliteTest : MonoBehaviour
             new string[] { "39", "0", "'8_2'", "0"},
         });
     }
-
-
-
 }
