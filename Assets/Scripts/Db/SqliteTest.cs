@@ -34,7 +34,7 @@ public class SqliteTest : MonoBehaviour
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS UserCard ( user_id INTEGER, card_id INTEGER, FOREIGN KEY(user_id) REFERENCES User(user_id), FOREIGN KEY(card_id) REFERENCES Card(card_id))");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER)");
         // Close connection
-        // ClearTable(dbcon);
+        //ClearTable(dbcon);
         dbcon.Close();
         SetDB();
 
@@ -97,9 +97,9 @@ public class SqliteTest : MonoBehaviour
      */
     public string[][] Select(string[] column, string table, string condition = "")
     {
+        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
-
         string[][] result = ExecQueryWithOutput(dbcon, ("Select " + String.Join(", ", column) + " FROM " + table + " " + condition), column.Length);
         dbcon.Close();
         return result;
@@ -123,6 +123,7 @@ public class SqliteTest : MonoBehaviour
      */
     public void InsertInto(string table, string[] column, string[][] values)
     {
+        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
         List<string> valueJoin = new List<string> { };
@@ -144,6 +145,7 @@ public class SqliteTest : MonoBehaviour
      */
     public void DeleteElement(string table, string condition)
     {
+        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
         ExecQuery(dbcon, "DELETE FROM " + table + " " + condition);
@@ -164,6 +166,7 @@ public class SqliteTest : MonoBehaviour
      */
     public void ModifyElement(string table, string[] column, string[] value, string condition = "")
     {
+        this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
         int index = 0;
