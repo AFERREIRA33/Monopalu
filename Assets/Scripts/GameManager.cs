@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
         boxs = GameObject.FindGameObjectsWithTag("Case");
         Player = GameObject.FindGameObjectWithTag("Player");
         Deck();
+        
     }
 
     // Update is called once per frame
