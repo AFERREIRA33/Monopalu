@@ -30,8 +30,19 @@ public class MovementCard : MonoBehaviour
     public void MoveNumber()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        
         Player.GetComponent<Movement>().Move(number);
+        List<int> newDeck = new List<int>() { };
+        bool del = false;
+        foreach (var card in Player.GetComponent<Movement>().playerCard)
+        {
+            if (number != card || del == true)
+            {
+                newDeck.Add(card);
+            } else
+            {
+                del = true;
+            }
+        }
         Destroy(gameObject);
     }
 

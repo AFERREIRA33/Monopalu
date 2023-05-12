@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     public GameObject[] boxs;
 
-
+    public int[] playerCard;
     public GameObject image;
     public GameObject start;
     public GameObject[] taxe;

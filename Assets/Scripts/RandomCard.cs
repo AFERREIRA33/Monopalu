@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class RandomCard : MonoBehaviour
 {
-    public int[] playerCard;
+    public GameObject player;
     public GameObject[] allCards;
     // Start is called before the first frame update
     void Start()
     {
-        playerCard = new int[] {5, 4 , 2,3,1,4,6,7,9,1,10,11,1,6,7,6};
-        playerCard = GetRandomCard();
 
     }
 
@@ -20,18 +18,34 @@ public class RandomCard : MonoBehaviour
         
     }
 
-    public int[] GetRandomCard()
+    public void GetRandomCard()
     {
+        int cardNumber = 5;
+        int[] playerCard = player.GetComponent<Movement>().playerCard;
         System.Random random = new System.Random();
-        int randomIndex;
+        int randomIndex = 0;
         Vector3 cardCoo = transform.position;
-        for (int i = 0; i < 5; i++)
+        if (playerCard.Length < 5)
         {
-            randomIndex = random.Next(0, playerCard.Length);
+            cardNumber = playerCard.Length;
+        }
+        List<int> indexUse = new List<int>();
+        bool notUse = true;
+        for (int i = 0; i < cardNumber; i++)
+        {
+            while (notUse)
+            {
+                randomIndex = random.Next(0, playerCard.Length);
+                if (!(indexUse.Contains(randomIndex)))
+                {
+                    notUse = false;
+                }
+            }
+            indexUse.Add(randomIndex);
             Instantiate(allCards[playerCard[randomIndex]], cardCoo, Quaternion.identity);
             cardCoo.x += 1;
+            notUse = true;
         }
-        return playerCard;
     }
 
 
