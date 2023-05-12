@@ -65,7 +65,7 @@ public class Properties : MonoBehaviour
         if (dbalreadyown[0][0] == "1" && numberpropeties <= 4 && Player.GetComponent<Money>().GetMoney() >= dlc[globalindex])
         {
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_build" }, new string[] { $"{ numberpropeties }" }, $" WHERE box_id = {globalindex}");
-            Player.GetComponent<Money>().BuyProperties(dlc[globalindex]);
+            Player.GetComponent<Money>().Substract(dlc[globalindex]);
             numberpropeties++;
             oldImage.enabled = false;
             button1.SetActive(false);
@@ -73,7 +73,7 @@ public class Properties : MonoBehaviour
         } else if (dbalreadyown[0][0] == "0" && numberpropeties < 4 && Player.GetComponent<Money>().GetMoney() >= price[globalindex])
         {
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_owner" }, new string[] { "1" }, $" WHERE box_id = {globalindex}");
-            Player.GetComponent<Money>().BuyProperties(price[globalindex]);
+            Player.GetComponent<Money>().Substract(price[globalindex]);
             numberpropeties++;
             oldImage.enabled = false;
             button1.SetActive(false);
