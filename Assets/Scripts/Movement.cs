@@ -75,6 +75,20 @@ public class Movement : MonoBehaviour
                 Destination.SetActive(true);
             }
         }
+        foreach (var item in lucky)
+        {
+            if (pos == item)
+            {
+                Debug.Log("Tu est sur une case Lucky");
+            }
+        }
+        foreach (var item in chest)
+        {
+            if (pos == item)
+            {
+                Debug.Log("Tu est sur une case coffre");
+            }
+        }
         foreach (var item in taxe)
         {
             if (pos == item)
