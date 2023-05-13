@@ -6,6 +6,7 @@ public class Chest : MonoBehaviour
 {
     public GameObject[] boxs;
     private GameObject Player;
+    public GameObject Destination;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,7 +107,7 @@ public class Chest : MonoBehaviour
     }
     public void WarpTrain()
     {
-        Debug.Log("Faut ajoutez le systéme");
+        Destination.SetActive(true);
     }
     public void WinPrice()
     {

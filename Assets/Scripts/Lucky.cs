@@ -7,6 +7,7 @@ public class Lucky : MonoBehaviour
 {
     public GameObject[] boxs;
     private GameObject Player;
+    public GameObject Destination;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +65,8 @@ public class Lucky : MonoBehaviour
 
     public void WarpTrain()
     {
-        Debug.Log("Faut ajoutez le systéme");
+        Destination.SetActive(true);
+
     }
 
     public void WarpCivilization()

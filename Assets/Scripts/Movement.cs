@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     public GameObject pos;
     public GameObject jail;
     public GameObject[] station;
+    public GameObject[] lucky;
+    public GameObject[] chest;
 
     public int boxIndex = 0;
     public int befor = 0;
@@ -72,6 +74,20 @@ public class Movement : MonoBehaviour
             if (pos == item)
             {
                 Destination.SetActive(true);
+            }
+        }
+        foreach (var item in lucky)
+        {
+            if (pos == item)
+            {
+                Debug.Log("Tu est sur une case Lucky");
+            }
+        }
+        foreach (var item in chest)
+        {
+            if (pos == item)
+            {
+                Debug.Log("Tu est sur une case coffre");
             }
         }
         foreach (var item in taxe)
