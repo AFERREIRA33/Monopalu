@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -67,35 +69,20 @@ public class Movement : MonoBehaviour
         {
             GetComponent<Money>().AddMoney(20000);
         }
-
-        foreach (var item in station)
+        if (ArrayUtility.Contains(station, pos))
         {
-            if (pos == item)
-            {
-                Destination.SetActive(true);
-            }
+            Destination.SetActive(true);
         }
-        foreach (var item in lucky)
+        if (ArrayUtility.Contains(lucky, pos))
         {
-            if (pos == item)
-            {
-                Debug.Log("Tu est sur une case Lucky");
-            }
+            Debug.Log("Tu es sur une case Lucky");
         }
-        foreach (var item in chest)
+        if (ArrayUtility.Contains(chest, pos)) {
+            Debug.Log("Tu es sur une case coffre");
+        }
+        if (ArrayUtility.Contains(taxe, pos))
         {
-            if (pos == item)
-            {
-                Debug.Log("Tu est sur une case coffre");
-            }
+            GetComponent<Money>().Substract(20000);
         }
-        foreach (var item in taxe)
-        {
-            if (pos == item)
-            {
-                GetComponent<Money>().Substract(20000);
-            }
-        }
-
     }
 }
