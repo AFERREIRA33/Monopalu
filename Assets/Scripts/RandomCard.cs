@@ -47,8 +47,4 @@ public class RandomCard : MonoBehaviour
             notUse = true;
         }
     }
-
-
-
-
 }

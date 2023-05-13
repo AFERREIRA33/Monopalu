@@ -35,7 +35,7 @@ public class MovementCard : MonoBehaviour
         bool del = false;
         foreach (var card in Player.GetComponent<Movement>().playerCard)
         {
-            if (number != card || del == true)
+            if (number-1 != card || del == true)
             {
                 newDeck.Add(card);
             } else
@@ -43,7 +43,12 @@ public class MovementCard : MonoBehaviour
                 del = true;
             }
         }
-        Destroy(gameObject);
+        Player.GetComponent<Movement>().playerCard = newDeck.ToArray();
+        foreach (var item in GameObject.FindGameObjectsWithTag("MovementCard"))
+        {
+            Destroy(item);
+        }
+        GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
     }
 
     public void OnMouseOver()
