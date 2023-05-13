@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     public GameObject start;
     public GameObject[] taxe;
     public GameObject Destination;
-    public GameObject HUD;
     public GameObject pos;
     public GameObject jail;
     public GameObject[] station;
@@ -24,7 +23,6 @@ public class Movement : MonoBehaviour
         image = GameObject.FindGameObjectWithTag("ImageCenter");
         boxs = GameObject.FindGameObjectsWithTag("Case");
         transform.position = boxs[boxIndex].transform.position;
-
     }
 
     // Update is called once per frame

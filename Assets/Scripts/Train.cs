@@ -21,7 +21,6 @@ public class Train : MonoBehaviour
 
     public void North()
     {
-        TrainHud = GameObject.Find("Destination");
         Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
         Player.transform.position = boxs[25].transform.position;
@@ -30,7 +29,6 @@ public class Train : MonoBehaviour
 
     public void South()
     {
-        TrainHud = GameObject.Find("Destination");
         Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
         Player.transform.position = boxs[5].transform.position;
@@ -38,7 +36,6 @@ public class Train : MonoBehaviour
     }
     public void East()
     {
-        TrainHud = GameObject.Find("Destination");
         Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
         Player.transform.position = boxs[35].transform.position;
@@ -46,7 +43,6 @@ public class Train : MonoBehaviour
     }
     public void West()
     {
-        TrainHud = GameObject.Find("Destination");
         Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
         Player.transform.position = boxs[15].transform.position;
