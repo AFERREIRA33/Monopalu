@@ -5,7 +5,7 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     public GameObject TrainHud;
-    private GameObject Player;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -21,31 +21,32 @@ public class Train : MonoBehaviour
 
     public void North()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player.transform.position = boxs[25].transform.position;
+        player.transform.position = boxs[25].transform.position;
+        player.GetComponent<Movement>().boxIndex = 25;
         TrainHud.SetActive(false);
+
     }
 
     public void South()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player.transform.position = boxs[5].transform.position;
+        player.transform.position = boxs[5].transform.position;
+        player.GetComponent<Movement>().boxIndex = 5;
         TrainHud.SetActive(false);
     }
     public void East()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player.transform.position = boxs[35].transform.position;
+        player.transform.position = boxs[35].transform.position;
+        player.GetComponent<Movement>().boxIndex = 35;
         TrainHud.SetActive(false);
     }
     public void West()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player.transform.position = boxs[15].transform.position;
+        player.transform.position = boxs[15].transform.position;
+        player.GetComponent<Movement>().boxIndex = 15;
         TrainHud.SetActive(false);
     }
 }

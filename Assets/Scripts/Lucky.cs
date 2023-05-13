@@ -93,7 +93,7 @@ public class Lucky : MonoBehaviour
         GetComponent<Money>().AddMoney(10000);
     }
 
-    public void Smach()
+    public void Smash()
     {
         GetComponent<Money>().AddMoney(100);
     }

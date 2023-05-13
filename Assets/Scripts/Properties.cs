@@ -47,7 +47,8 @@ public class Properties : MonoBehaviour
                 string[][] numberpropre = db.GetComponent<SqliteTest>().Select(new string[] { "box_build" }, "Box", $" WHERE box_id = {index}");
                 string[][] ownedbyother = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
                 int numberpropeInt = int.Parse(numberpropre[0][0]);
-                if (ownedbyother[0][0] != "1" || ownedbyother[0][0] != "0")
+                Debug.Log(ownedbyother[0][0]);
+                if (ownedbyother[0][0] != "1" && ownedbyother[0][0] != "0")
                 {
                     globalindex = index;
                     PayOtherProperties();

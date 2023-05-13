@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour
     public GameObject pos;
     public GameObject jail;
     public GameObject[] station;
+    public GameObject[] chest;
+    public GameObject[] lucky;
+    public GameObject[] lightCase;
 
     public int boxIndex = 0;
     public int befor = 0;
@@ -32,7 +35,7 @@ public class Movement : MonoBehaviour
     }
 
     public void Move(int rollnumber)
-    {   
+    {
         if (boxIndex + rollnumber > 39)
         {
             befor = boxIndex - rollnumber;
@@ -79,5 +82,6 @@ public class Movement : MonoBehaviour
                 GetComponent<Money>().Substract(20000);
             }
         }
+
     }
 }

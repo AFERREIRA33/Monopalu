@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 293446798511789655}
   m_Layer: 0
   m_Name: RandomCard
-  m_TagString: Untagged
+  m_TagString: random
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4933750d2bcc247b025c417ecabb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCard: 
+  player: {fileID: 0}
   allCards:
   - {fileID: 4116150292083789899, guid: e89176cd108581b43a9e28a6121d3a7b, type: 3}
   - {fileID: 533137912757441400, guid: 15fa820dcba9af344897d2287dbc99f9, type: 3}
