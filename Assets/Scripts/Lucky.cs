@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Lucky : MonoBehaviour
 
@@ -8,12 +11,60 @@ public class Lucky : MonoBehaviour
     public GameObject[] boxs;
     private GameObject Player;
     public GameObject Destination;
+    public Image oldImage;
+    public Sprite[] spriteTable;
+    private Action[] lucky;
+    private int rndNum;
+    public GameObject getCard;
+    public GameObject button;
     // Start is called before the first frame update
     void Start()
     {
         boxs = GameObject.FindGameObjectsWithTag("Case");
         Player = GameObject.FindGameObjectWithTag("Player");
+        lucky = new Action[]
+        {
+            () => WarpKH(),
+            () => WarpStart(),
+            () => WarpZelda(),
+            () => WarpCivilization(),
+            () => dlcTaxe(),
+            () => WarpTrain(),
+            () => WorldCupLoL(),
+            () => Smash(),
+            () => Dividend(),
+            () => ExitJail(),
+            () => LuckyBack(),
+            () => LuckyForward(),
+            () => GoJail(),
+            () => Penalty(),
+            () => Collector(),
+            () => Cheat(),
+            () => Sell()
+        };
+    }
 
+    public void OkButton()
+    {
+        oldImage.enabled = false;
+        button.SetActive(false);
+        getCard.GetComponent<RandomCard>().GetRandomCard();
+    }
+
+    public void GetRandomLucky()
+    {
+        System.Random random = new System.Random();
+        rndNum = random.Next(0, lucky.Length);
+        oldImage.enabled = true;
+        button.SetActive(true);
+        oldImage.sprite = spriteTable[rndNum];
+        lucky[rndNum]();
+
+    }
+
+    public void GetRandomCard()
+    {
+        System.Random random = new System.Random();
     }
 
     // Update is called once per frame
@@ -126,5 +177,9 @@ public class Lucky : MonoBehaviour
     public void Sell()
     {
         GetComponent<Money>().AddMoney(15000);
+    }
+    public void dlcTaxe()
+    {
+        Debug.Log("Faut ajoutez le systéme");
     }
 }

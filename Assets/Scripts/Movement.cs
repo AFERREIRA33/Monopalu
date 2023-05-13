@@ -75,14 +75,19 @@ public class Movement : MonoBehaviour
         }
         if (ArrayUtility.Contains(lucky, pos))
         {
-            Debug.Log("Tu es sur une case Lucky");
+            image.GetComponent<Lucky>().GetRandomLucky();
         }
         if (ArrayUtility.Contains(chest, pos)) {
-            Debug.Log("Tu es sur une case coffre");
+            image.GetComponent<Chest>().GetRandomChest();
         }
         if (ArrayUtility.Contains(taxe, pos))
         {
             GetComponent<Money>().Substract(20000);
         }
+        if (ArrayUtility.Contains(lightCase, pos))
+        {
+            Debug.Log("Tu es sur une case lumière");
+        }
+
     }
 }
