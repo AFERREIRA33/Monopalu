@@ -26,6 +26,8 @@ public class Movement : MonoBehaviour
     public GameObject button;
     public GameObject button2;
     public bool isAI;
+    public int randomnumber;
+    public bool isjail;
 
     public int boxIndex = 0;
     public int befor = 0;
@@ -36,6 +38,14 @@ public class Movement : MonoBehaviour
         boxs = GameObject.FindGameObjectsWithTag("Case");
         player = GameObject.FindGameObjectsWithTag("Player");
         transform.position = boxs[boxIndex].transform.position;
+        isjail = false;
+    }
+
+    public int RandomNumber()
+    {
+        System.Random random = new System.Random();
+        int nombre = random.Next(1, 13);
+        return nombre;
     }
 
     public void Move(int rollnumber)
@@ -66,7 +76,10 @@ public class Movement : MonoBehaviour
 
         if (pos == jail)
         {
+            transform.position = boxs[10].transform.position;
+            isjail =  true;
             button.SetActive(true);
+
         }
 
         if (boxIndex < befor)
@@ -121,8 +134,8 @@ public class Movement : MonoBehaviour
         }
         if (ArrayUtility.Contains(lightCase, pos))
         {
-            Debug.Log("Tu es sur une case lumière");
-            button.SetActive(true);
+            randomnumber = RandomNumber();
+            Move(randomnumber);
         }
     }
 }
