@@ -64,7 +64,7 @@ public class Lucky : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void juif()
     {
         if (Input.GetKeyDown("r"))
         {
@@ -161,7 +161,7 @@ public class Lucky : MonoBehaviour
 
     public void ExitJail()
     {
-        Debug.Log("Faut ajoutez le systéme");
+        Debug.Log("Faut ajoutez le systï¿½me");
     }
 
     public void Penalty()
@@ -183,6 +183,6 @@ public class Lucky : MonoBehaviour
     }
     public void dlcTaxe()
     {
-        Debug.Log("Faut ajoutez le systéme");
+        Debug.Log("Faut ajoutez le systï¿½me");
     }
 }

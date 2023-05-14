@@ -90,7 +90,7 @@ public class IA : MonoBehaviour
         List<int>  deck = new List<int>();
         for (int i = 0; i < 30; i++)
         {
-            deck.Add(random.Next(1, 3));
+            deck.Add(random.Next(1, 13));
         }
         deckAI = deck.ToArray();
     }
