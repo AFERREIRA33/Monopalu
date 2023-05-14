@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -96,7 +97,7 @@ public class Movement : MonoBehaviour
             GetComponent<Money>().AddMoney(20000);
             button.SetActive(true);
         }
-        if (ArrayUtility.Contains(station, pos))
+        if (station.Contains(pos))
         {
             if (!isAI)
             {
@@ -106,7 +107,7 @@ public class Movement : MonoBehaviour
                 button.SetActive(true);
             }
         }
-        if (ArrayUtility.Contains(lucky, pos))
+        if (lucky.Contains(pos))
         {
             if (isAI)
             {
@@ -117,7 +118,7 @@ public class Movement : MonoBehaviour
                 image.GetComponent<Lucky>().GetRandomLucky();
             }
         }
-        if (ArrayUtility.Contains(chest, pos)) {
+        if (chest.Contains(pos)) {
             if(isAI)
             {
                 image.GetComponent<Chest>().GetRandomChest(GetComponent<IA>().userId);
@@ -126,12 +127,12 @@ public class Movement : MonoBehaviour
                 image.GetComponent<Chest>().GetRandomChest();
             }
         }
-        if (ArrayUtility.Contains(taxe, pos))
+        if (taxe.Contains(pos))
         {
             GetComponent<Money>().Substract(20000);
             button.SetActive(true);
         }
-        if (ArrayUtility.Contains(lightCase, pos))
+        if (lightCase.Contains(pos))
         {
             randomnumber = RandomNumber();
             Move(randomnumber);
