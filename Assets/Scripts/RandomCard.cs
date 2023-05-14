@@ -42,7 +42,6 @@ public class RandomCard : MonoBehaviour
         if (playerCard.Length == 0)
         {
             end.SetActive(true);
-            hud.SetActive(false);
         }
     }
 }
