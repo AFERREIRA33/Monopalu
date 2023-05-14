@@ -63,12 +63,15 @@ public class Properties : MonoBehaviour
                     {
                         oldImage.enabled = true;
                         button1.SetActive(true);
-                        button2.SetActive(true);
+                        button2.SetActive(true); 
+                        okButton.SetActive(false);
                         oldImage.sprite = spritetable[index];
                     } else
                     {
                         oldImage.enabled = true;
                         okButton.SetActive(true);
+                        button1.SetActive(false);
+                        button2.SetActive(false);
                         oldImage.sprite = spritetable[index];
                         BuyPropety();
                     }
@@ -86,6 +89,7 @@ public class Properties : MonoBehaviour
         string[][] dbalreadyown = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
         if (dbalreadyown[0][0] == userId.ToString() && numberpropeties <= 5 && player[userId].GetComponent<Money>().GetMoney() >= dlc[index])
         {
+            Debug.Log("titi");
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_build" }, new string[] { $"{ numberpropeties }" }, $" WHERE box_id = {globalindex}");
             player[userId].GetComponent<Money>().Substract(dlc[index]);
             numberpropeties++;
@@ -110,16 +114,23 @@ public class Properties : MonoBehaviour
             }
         } else
         {
+            Debug.Log(player[userId].GetComponent<Money>().GetMoney());
+            okButton.SetActive(true);
+            button1.SetActive(false);
+            button2.SetActive(false);
             text.SetActive(true);
         }
     }
 
     public void NotBuy()
     {
-        oldImage.enabled = false;
-        button1.SetActive(false);
-        button2.SetActive(false);
-        text.SetActive(false);
+        if (userId == 0 )
+        {
+            oldImage.enabled = false;
+            button1.SetActive(false);
+            button2.SetActive(false);
+            text.SetActive(false);
+        }
     }
 
     public void PayOtherProperties()

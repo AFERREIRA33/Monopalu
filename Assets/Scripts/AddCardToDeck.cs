@@ -28,7 +28,7 @@ public class AddCardToDeck : MonoBehaviour
     //Create the Button for delete the card from the deck
     public void AddCard(GameObject clickedButton)
     {
-        if (buttonOfDeck.Count <= 30)
+        if (buttonOfDeck.Count < 30)
         {
             counterCard.text = buttonOfDeck.Count + "/30";
             Button btn = GameObject.Instantiate(buttonDeck);

@@ -22,7 +22,6 @@ public class Money : MonoBehaviour
     public void Substract(int moneysubstract)
     {
         money -= moneysubstract;
-        Debug.Log(money);
     }
 
     public void AddMoney(int moneytoadd)

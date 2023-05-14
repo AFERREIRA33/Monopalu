@@ -17,12 +17,14 @@ public class Movement : MonoBehaviour
     public GameObject Destination;
     public GameObject pos;
     public GameObject jail;
+    public GameObject sleep;
     public GameObject[] station;
     public GameObject[] chest;
     public GameObject[] lucky;
     public GameObject[] lightCase;
     public GameObject[] player;
     public GameObject button;
+    public GameObject button2;
     public bool isAI;
 
     public int boxIndex = 0;
@@ -38,6 +40,7 @@ public class Movement : MonoBehaviour
 
     public void Move(int rollnumber)
     {
+        Debug.Log("rollnumber : " + rollnumber);
         if (boxIndex + rollnumber > 39)
         {
             befor = boxIndex - rollnumber;
@@ -48,8 +51,10 @@ public class Movement : MonoBehaviour
             }
             boxIndex = 0;
         }  
+        Debug.Log("position avant : " + boxIndex);
         boxIndex += rollnumber;
         pos = boxs[boxIndex];
+        Debug.Log("position apres : " + pos.name);
         transform.position = boxs[boxIndex].transform.position;
         if (isAI)
         {
@@ -61,13 +66,16 @@ public class Movement : MonoBehaviour
 
         if (pos == jail)
         {
-            transform.position = boxs[10].transform.position;
             button.SetActive(true);
         }
 
         if (boxIndex < befor)
         {
             GetComponent<Money>().AddMoney(20000);
+            button.SetActive(true);
+        }
+        if (pos == sleep || pos == boxs[10])
+        {
             button.SetActive(true);
         }
 
@@ -81,6 +89,9 @@ public class Movement : MonoBehaviour
             if (!isAI)
             {
                 Destination.SetActive(true);
+            } else
+            {
+                button.SetActive(true);
             }
         }
         if (ArrayUtility.Contains(lucky, pos))

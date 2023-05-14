@@ -181,8 +181,6 @@ public class SqliteTest : MonoBehaviour
             change.Add(item + " = " + value[index]);
             index++;
         }
-        Debug.Log("UPDATE " + table + " SET " + String.Join(", ", change.ToArray()) + condition);
-        ExecQuery(dbcon, "UPDATE " + table + " SET " + String.Join(", ", change.ToArray()) + condition);
         dbcon.Close();
     }
 

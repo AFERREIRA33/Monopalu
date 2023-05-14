@@ -7,6 +7,8 @@ public class RandomCard : MonoBehaviour
     public GameObject player;
     public GameObject[] allCards;
     public GameManager gameManager;
+    public GameObject hud;
+    public GameObject end;
 
     public void GetRandomCard()
     {
@@ -36,6 +38,11 @@ public class RandomCard : MonoBehaviour
             Instantiate(allCards[playerCard[randomIndex]], cardCoo, Quaternion.identity);
             cardCoo.x += 1;
             notUse = true;
+        }
+        if (playerCard.Length == 0)
+        {
+            end.SetActive(true);
+            hud.SetActive(false);
         }
     }
 }

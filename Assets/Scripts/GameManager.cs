@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI moneyplayer2;
     public TextMeshProUGUI moneyplayer3;
     public TextMeshProUGUI moneyplayer4;
+    public GameObject text;
+    public Image oldImage;
     public int userId;
     // Start is called before the first frame update
     void Start()
@@ -55,7 +58,9 @@ public class GameManager : MonoBehaviour
         button.SetActive(false);
         button1.SetActive(false);
         button2.SetActive(false);
-        Debug.Log(userId);
+        oldImage.enabled = false;
+        text.SetActive(false);
+        Debug.Log("user id : "+userId);
         if (userId > 3)
         {
             GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
@@ -64,5 +69,9 @@ public class GameManager : MonoBehaviour
         {
             Player[userId].GetComponent<IA>().Play();
         }
+    }
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
