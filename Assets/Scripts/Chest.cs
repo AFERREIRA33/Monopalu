@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Chest : MonoBehaviour
 {
     public GameObject[] boxs;
-    private GameObject Player;
+    private GameObject[] Player;
     public GameObject Destination;
     public Image oldImage;
     public Sprite[] spriteTable;
@@ -16,10 +16,13 @@ public class Chest : MonoBehaviour
     private int rndNum;
     public GameObject getCard;
     public GameObject button;
+    public GameObject button1;
+    public GameObject button2;
+    public int userId = 1;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectsWithTag("Player");
         boxs = GameObject.FindGameObjectsWithTag("Case");
         chest = new Action[]
         {
@@ -42,22 +45,17 @@ public class Chest : MonoBehaviour
             () => Legacy()
         };
     }
-    public void OkButton()
-    {
-        oldImage.enabled = false;
-        button.SetActive(false);
-        getCard.GetComponent<RandomCard>().GetRandomCard();
-    }
 
-    public void GetRandomChest()
+    public void GetRandomChest(int id = 1)
     {
+        userId = id - 1;
         System.Random random = new System.Random();
         rndNum = random.Next(0, chest.Length);
         oldImage.enabled = true;
         button.SetActive(true);
         oldImage.sprite = spriteTable[rndNum];
         chest[rndNum]();
-
+        userId++;
     }
 
     public void ChestBack()
@@ -66,14 +64,14 @@ public class Chest : MonoBehaviour
 
         foreach (GameObject i in boxs)
         {
-            if (i.transform.position == Player.transform.position)
+            if (i.transform.position == Player[userId].transform.position)
             {
                 break;
             }
             index++;
         }
         index = index - 2;
-            Player.transform.position = boxs[index].transform.position;
+        Player[userId].transform.position = boxs[index].transform.position;
     }
 
     public void ChestForward()
@@ -81,38 +79,38 @@ public class Chest : MonoBehaviour
         int index = 0;
         foreach (GameObject i in boxs)
         {
-            if (i.transform.position == Player.transform.position)
+            if (i.transform.position == Player[userId].transform.position)
             {
                 break;
             }
             index++;
         }
         index = index + 5;
-        Player.transform.position = boxs[index].transform.position;
+        Player[userId].transform.position = boxs[index].transform.position;
     }
 
     public void GoJail()
     {
         
-        Player.transform.position = boxs[10].transform.position;
+        Player[userId].transform.position = boxs[10].transform.position;
     }
     
     public void WarpStart()
     {
-        Player.transform.position = boxs[0].transform.position;
-        Player.GetComponent<Money>().AddMoney(20000);
+        Player[userId].transform.position = boxs[0].transform.position;
+        Player[userId].GetComponent<Money>().AddMoney(20000);
     }
     public void ErrorBank()
     {
-        Player.GetComponent<Money>().AddMoney(20000);
+        Player[userId].GetComponent<Money>().AddMoney(20000);
     }
     public void Doc()
     {
-        Player.GetComponent<Money>().Substract(5000);
+        Player[userId].GetComponent<Money>().Substract(5000);
     }
     public void SellConsol()
     {
-        Player.GetComponent<Money>().AddMoney(5000);
+        Player[userId].GetComponent<Money>().AddMoney(5000);
     }
     public void ExitJail()
     {
@@ -120,7 +118,7 @@ public class Chest : MonoBehaviour
     }
     public void Income()
     {
-        Player.GetComponent<Money>().AddMoney(10000);
+        Player[userId].GetComponent<Money>().AddMoney(10000);
     }
     public void Birthday()
     {
@@ -128,30 +126,37 @@ public class Chest : MonoBehaviour
     }
     public void Contribution()
     {
-        Player.GetComponent<Money>().AddMoney(2000);
+        Player[userId].GetComponent<Money>().AddMoney(2000);
     }
     public void intrest()
     {
-        Player.GetComponent<Money>().AddMoney(2500);
+        Player[userId].GetComponent<Money>().AddMoney(2500);
     }
     public void Insurance()
     {
-        Player.GetComponent<Money>().Substract(5000);
+        Player[userId].GetComponent<Money>().Substract(5000);
     }
     public void Penalty()
     {
-        Player.GetComponent<Money>().Substract(1000);
+        Player[userId].GetComponent<Money>().Substract(1000);
     }
     public void WarpTrain()
     {
-        Destination.SetActive(true);
+        if (userId == 0)
+        {
+            Destination.SetActive(true);
+        } else
+        {
+            Player[userId].transform.position = boxs[36].transform.position;
+            Player[userId].GetComponent<IA>().pos = 36;
+        }
     }
     public void WinPrice()
     {
-        Player.GetComponent<Money>().AddMoney(1000);
+        Player[userId].GetComponent<Money>().AddMoney(1000);
     }
     public void Legacy()
     {
-        Player.GetComponent<Money>().AddMoney(10000);
+        Player[userId].GetComponent<Money>().AddMoney(10000);
     }
 }

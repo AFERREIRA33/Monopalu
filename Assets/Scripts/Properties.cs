@@ -13,6 +13,7 @@ public class Properties : MonoBehaviour
     public GameObject[] boxs;
     public GameObject button1;
     public GameObject button2;
+    public GameObject okButton;
     public GameObject text;
     private int[][] paycase = new int[][]
     {
@@ -24,12 +25,13 @@ public class Properties : MonoBehaviour
         new int[] {25000,45000,55000,55000,60000,75000,75000,90000,90000,95000,100000,105000,105000,110000,115000,115000,120000,127500,127500,140000,150000,200000},
     };
     private int globalindex;
-    private GameObject Player;
-
+    private GameObject[] player;
+    public int userId = 0;
+    public int index = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     // Update is called once per frame
@@ -37,33 +39,41 @@ public class Properties : MonoBehaviour
     {
     }
 
-    public void SpawnProperties()
+    public void SpawnProperties(int id = 1)
     {
-        int index = 0;
+        userId = id-1;
+        index = 0;
         foreach(GameObject property in boxs)
         {
-            if (Player.transform.position == property.transform.position)
+            if (player[userId].transform.position == property.transform.position)
             {
-                string[][] numberpropre = db.GetComponent<SqliteTest>().Select(new string[] { "box_build" }, "Box", $" WHERE box_id = {index}");
+                string[] numCase = property.name.Split("Case");
+                globalindex = int.Parse(numCase[1])-1;
+                string[][] numberpropre = db.GetComponent<SqliteTest>().Select(new string[] { "box_build", "box_id" }, "Box", $" WHERE box_id = {globalindex}");
                 string[][] ownedbyother = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
                 int numberpropeInt = int.Parse(numberpropre[0][0]);
-                Debug.Log(ownedbyother[0][0]);
-                if (ownedbyother[0][0] != "1" && ownedbyother[0][0] != "0")
+                if (ownedbyother[0][0] != userId.ToString() && ownedbyother[0][0] != "0")
                 {
-                    globalindex = index;
                     PayOtherProperties();
                 } else if (numberpropeInt > 5)
                 {
-                    globalindex = index;
                 } else 
                 {
-                    oldImage.enabled = true;
-                    button1.SetActive(true);
-                    button2.SetActive(true);
-                    oldImage.sprite = spritetable[index];
-                    globalindex = index;
-
+                    if (userId ==0)
+                    {
+                        oldImage.enabled = true;
+                        button1.SetActive(true);
+                        button2.SetActive(true);
+                        oldImage.sprite = spritetable[index];
+                    } else
+                    {
+                        oldImage.enabled = true;
+                        okButton.SetActive(true);
+                        oldImage.sprite = spritetable[index];
+                        BuyPropety();
+                    }
                 }
+                break;
             }
             index++;
         }
@@ -74,24 +84,30 @@ public class Properties : MonoBehaviour
         string[][] numberpropre = db.GetComponent<SqliteTest>().Select(new string[] { "box_build" }, "Box", $" WHERE box_id = {globalindex}");
         int numberpropeties = int.Parse(numberpropre[0][0]);
         string[][] dbalreadyown = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
-        if (dbalreadyown[0][0] == "1" && numberpropeties <= 5 && Player.GetComponent<Money>().GetMoney() >= dlc[globalindex])
+        if (dbalreadyown[0][0] == userId.ToString() && numberpropeties <= 5 && player[userId].GetComponent<Money>().GetMoney() >= dlc[index])
         {
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_build" }, new string[] { $"{ numberpropeties }" }, $" WHERE box_id = {globalindex}");
-            Player.GetComponent<Money>().Substract(dlc[globalindex]);
+            player[userId].GetComponent<Money>().Substract(dlc[index]);
             numberpropeties++;
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_build" }, new string[] { $"{ numberpropeties }" }, $" WHERE box_id = {globalindex}");
-            Player.GetComponent<Money>().Substract(dlc[globalindex]);
-            oldImage.enabled = false;
-            button1.SetActive(false);
-            button2.SetActive(false);
-        } else if (dbalreadyown[0][0] == "0" && numberpropeties < 5 && Player.GetComponent<Money>().GetMoney() >= price[globalindex])
+            player[userId].GetComponent<Money>().Substract(dlc[index]);
+            if (userId == 0)
+            {
+                oldImage.enabled = false;
+                button1.SetActive(false);
+                button2.SetActive(false);
+            }
+        } else if (dbalreadyown[0][0] == "0" && numberpropeties < 5 && player[userId].GetComponent<Money>().GetMoney() >= price[index])
         {
-            db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_owner" }, new string[] { "1" }, $" WHERE box_id = {globalindex}");
-            Player.GetComponent<Money>().Substract(price[globalindex]);
+            db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_owner" }, new string[] { $"{userId}" }, $" WHERE box_id = {globalindex}");
+            player[userId].GetComponent<Money>().Substract(price[index]);
             numberpropeties++;
-            oldImage.enabled = false;
-            button1.SetActive(false);
-            button2.SetActive(false);
+            if (userId == 0)
+            {
+                oldImage.enabled = false;
+                button1.SetActive(false);
+                button2.SetActive(false);
+            }
         } else
         {
             text.SetActive(true);
@@ -110,6 +126,7 @@ public class Properties : MonoBehaviour
     {
         string[][] numberpropr = db.GetComponent<SqliteTest>().Select(new string[] { "box_build" }, "Box", $" WHERE box_id = {globalindex}");
         string[][] owner = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
-        Player.GetComponent<Money>().Substract(paycase[globalindex][int.Parse(numberpropr[0][0])]);
+        player[userId].GetComponent<Money>().Substract(paycase[globalindex][int.Parse(numberpropr[0][0])]);
     }
+
 }

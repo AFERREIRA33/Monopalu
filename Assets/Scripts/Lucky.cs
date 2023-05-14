@@ -9,7 +9,7 @@ public class Lucky : MonoBehaviour
 
 {
     public GameObject[] boxs;
-    private GameObject Player;
+    private GameObject[] Player;
     public GameObject Destination;
     public Image oldImage;
     public Sprite[] spriteTable;
@@ -17,11 +17,12 @@ public class Lucky : MonoBehaviour
     private int rndNum;
     public GameObject getCard;
     public GameObject button;
+    public int userId;
     // Start is called before the first frame update
     void Start()
     {
         boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectsWithTag("Player");
         lucky = new Action[]
         {
             () => WarpKH(),
@@ -51,20 +52,15 @@ public class Lucky : MonoBehaviour
         getCard.GetComponent<RandomCard>().GetRandomCard();
     }
 
-    public void GetRandomLucky()
+    public void GetRandomLucky(int id = 1)
     {
+        userId = id-1;
         System.Random random = new System.Random();
         rndNum = random.Next(0, lucky.Length);
         oldImage.enabled = true;
         button.SetActive(true);
         oldImage.sprite = spriteTable[rndNum];
         lucky[rndNum]();
-
-    }
-
-    public void GetRandomCard()
-    {
-        System.Random random = new System.Random();
     }
 
     // Update is called once per frame
@@ -79,17 +75,16 @@ public class Lucky : MonoBehaviour
     public void LuckyBack()
     {
         int index = 0;
-
         foreach (GameObject i in boxs)
         {
-            if (i.transform.position == Player.transform.position)
+            if (i.transform.position == Player[userId].transform.position)
             {
                 break;
             }
             index++;
         }
         index = index - 3;
-            Player.transform.position = boxs[index].transform.position;
+        Player[userId].transform.position = boxs[index].transform.position;
     }
 
     public void LuckyForward()
@@ -99,61 +94,69 @@ public class Lucky : MonoBehaviour
 
         foreach (GameObject i in boxs)
         {
-            if (i.transform.position == Player.transform.position)
+            if (i.transform.position == Player[userId].transform.position)
             {
                 break;
             }
             index++;
         }
         index = index + 3;
-        Player.transform.position = boxs[index].transform.position;
+        Player[userId].transform.position = boxs[index].transform.position;
     }
 
     public void GoJail()
     {
-        Player.transform.position = boxs[10].transform.position;
+        Player[userId].transform.position = boxs[10].transform.position;
     }
 
     public void WarpTrain()
     {
-        Destination.SetActive(true);
+        if (userId == 0)
+        {
+            Destination.SetActive(true);
+        }
+        else
+        {
+            Player[userId].transform.position = boxs[36].transform.position;
+            Player[userId].GetComponent<IA>().pos = 36;
+        }
 
     }
 
     public void WarpCivilization()
     {
-        Player.transform.position = boxs[11].transform.position;
+        Player[userId].transform.position = boxs[11].transform.position;
     }
 
     public void WarpZelda()
     {
-        Player.transform.position = boxs[24].transform.position;
+        Player[userId].transform.position = boxs[24].transform.position;
     }
 
     public void WarpStart()
     {
-        Player.transform.position = boxs[0].transform.position;
-        GetComponent<Money>().AddMoney(20000);
+        Player[userId].transform.position = boxs[0].transform.position;
+        Player[userId].GetComponent<Money>().AddMoney(20000);
     }
 
     public void WarpKH()
     {
-        Player.transform.position = boxs[39].transform.position;
+        Player[userId].transform.position = boxs[39].transform.position;
     }
 
     public void WorldCupLoL()
     {
-        GetComponent<Money>().AddMoney(10000);
+        Player[userId].GetComponent<Money>().AddMoney(10000);
     }
 
     public void Smash()
     {
-        GetComponent<Money>().AddMoney(100);
+        Player[userId].GetComponent<Money>().AddMoney(100);
     }
 
     public void Dividend()
     {
-        GetComponent<Money>().AddMoney(5000);
+        Player[userId].GetComponent<Money>().AddMoney(5000);
     }
 
     public void ExitJail()
@@ -163,20 +166,20 @@ public class Lucky : MonoBehaviour
 
     public void Penalty()
     {
-        GetComponent<Money>().Substract(1500);
+        Player[userId].GetComponent<Money>().Substract(1500);
     }
     public void Collector()
     {
-        GetComponent<Money>().Substract(15000);
+        Player[userId].GetComponent<Money>().Substract(15000);
 
     }
     public void Cheat()
     {
-        GetComponent<Money>().Substract(2000);
+        Player[userId].GetComponent<Money>().Substract(2000);
     }
     public void Sell()
     {
-        GetComponent<Money>().AddMoney(15000);
+        Player[userId].GetComponent<Money>().AddMoney(15000);
     }
     public void dlcTaxe()
     {

@@ -8,25 +8,23 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int PlayerLocation = 0;
-    private GameObject Player;
+    private GameObject[] Player;
     public GameObject[] boxs;
     public GameObject dataBase;
     public GameObject spawnCard;
+    public GameObject button;
+    public GameObject button1;
+    public GameObject button2;
+    public int userId;
     // Start is called before the first frame update
     void Start()
     {
-        dataBase.GetComponent<SqliteTest>().DeleteElement("Box", "");
         boxs = GameObject.FindGameObjectsWithTag("Case");
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectsWithTag("Player");
         Deck();
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void Deck()
     {
         string[][] playerDeck = dataBase.GetComponent<SqliteTest>().Select(new string[] { "card_id" }, "UserCard", " WHERE user_id = 1");
@@ -35,7 +33,23 @@ public class GameManager : MonoBehaviour
         {
             playerDeckList.Add(int.Parse(card[0]));
         }
-        Player.GetComponent<Movement>().playerCard = playerDeckList.ToArray();
+        Player[0].GetComponent<Movement>().playerCard = playerDeckList.ToArray();
         spawnCard.GetComponent<RandomCard>().GetRandomCard();
+    }
+
+    public void ChangeAction()
+    {
+        button.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        Debug.Log(userId);
+        if (userId > 3)
+        {
+            GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
+        }
+        else
+        {
+            Player[userId].GetComponent<IA>().Play();
+        }
     }
 }

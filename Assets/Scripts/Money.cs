@@ -9,7 +9,7 @@ public class Money : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        money = 148000;
+        //money = 148000;
         
     }
 
@@ -22,6 +22,7 @@ public class Money : MonoBehaviour
     public void Substract(int moneysubstract)
     {
         money -= moneysubstract;
+        Debug.Log(money);
     }
 
     public void AddMoney(int moneytoadd)

@@ -34,15 +34,12 @@ public class SqliteTest : MonoBehaviour
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Card (card_id integer PRIMARY KEY AUTOINCREMENT, card_name TEXT, card_action TEXT, card_desc TEXT,  card_value INTEGER)");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS UserCard ( user_id INTEGER, card_id INTEGER, FOREIGN KEY(user_id) REFERENCES User(user_id), FOREIGN KEY(card_id) REFERENCES Card(card_id))");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER, box_value INTEGER)");
+        ExecQuery(dbcon, "DELETE FROM Box");
         //ExecQuery(dbcon, "ALTER TABLE Box ADD box_value INTEGER");
         // Close connection
         //ClearTable(dbcon);
         dbcon.Close();
         SetDB();
-
-
-
-
     }
 
     //Execute a sqlite command with no output for modify a table for example
@@ -173,6 +170,7 @@ public class SqliteTest : MonoBehaviour
      */
     public void ModifyElement(string table, string[] column, string[] value, string condition = "")
     {
+
         this.connection = "URI=file:" + Application.persistentDataPath + "/" + "Monopalu";
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
@@ -183,6 +181,7 @@ public class SqliteTest : MonoBehaviour
             change.Add(item + " = " + value[index]);
             index++;
         }
+        Debug.Log("UPDATE " + table + " SET " + String.Join(", ", change.ToArray()) + condition);
         ExecQuery(dbcon, "UPDATE " + table + " SET " + String.Join(", ", change.ToArray()) + condition);
         dbcon.Close();
     }

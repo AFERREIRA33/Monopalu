@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1720512794179463868}
   - component: {fileID: 8155312087123876966}
-  - component: {fileID: 1788754815180191376}
   - component: {fileID: 946142352192091113}
+  - component: {fileID: 1877409738885595707}
+  - component: {fileID: 905122114290865359}
   m_Layer: 0
   m_Name: Queen
   m_TagString: Untagged
@@ -86,21 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1788754815180191376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4138823528343553284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff454c95bc6531f40939a5e1a061c5a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxs: []
-  movespeed: 1
-  boxIndex: 0
 --- !u!114 &946142352192091113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +100,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+--- !u!114 &1877409738885595707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138823528343553284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a8b233036d0f54ebac9f3807189e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataBase: {fileID: 0}
+  image: {fileID: 0}
+  userId: 0
+--- !u!114 &905122114290865359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138823528343553284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff454c95bc6531f40939a5e1a061c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxs: []
+  playerCard: 
+  image: {fileID: 0}
+  start: {fileID: 0}
+  taxe:
+  - {fileID: 0}
+  - {fileID: 0}
+  Destination: {fileID: 0}
+  pos: {fileID: 0}
+  jail: {fileID: 0}
+  station:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chest:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lucky:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lightCase:
+  - {fileID: 0}
+  - {fileID: 0}
+  isAI: 1
+  boxIndex: 0
+  befor: 0

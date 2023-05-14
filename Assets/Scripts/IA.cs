@@ -12,9 +12,10 @@ public class IA : MonoBehaviour
     private GameObject[] boxs;
     public GameObject dataBase;
     public GameObject image;
-    private int userId;
-    private int pos = 0;
+    public int userId;
+    public int pos = 0;
     private int before = 0;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +31,10 @@ public class IA : MonoBehaviour
                 userId = int.Parse(user[1]);
             }
         }
-        Play();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("b"))
-        {
-            Play();
-        }
     }
     public void Play()
     {
@@ -49,6 +45,7 @@ public class IA : MonoBehaviour
         string[][] dbInfo;
         int newPos;
         int roll;
+        gameManager.userId = userId;
      
         foreach (var card in cardRoll)
         {
@@ -64,7 +61,6 @@ public class IA : MonoBehaviour
                 pos = 0;
             }
             newPos = pos + roll;
-            Debug.Log(newPos);
             dbInfo = dataBase.GetComponent<SqliteTest>().Select(new string[] { "box_owner", "box_desc", "box_build", "box_id", "box_value" }, "Box", $"WHERE box_id = {newPos} ");
             if (dbInfo[0][1].Contains("Property"))
             {
@@ -85,8 +81,7 @@ public class IA : MonoBehaviour
                 theIndex = newPos;
             }
         }
-
-        transform.position = boxs[theIndex].transform.position;
+        GetComponent<Movement>().Move(theIndex - pos);
         pos = theIndex;
     }
     private void CreateDeck()
@@ -95,7 +90,7 @@ public class IA : MonoBehaviour
         List<int>  deck = new List<int>();
         for (int i = 0; i < 30; i++)
         {
-            deck.Add(random.Next(0, 13));
+            deck.Add(random.Next(1, 3));
         }
         deckAI = deck.ToArray();
     }
@@ -145,7 +140,6 @@ public class IA : MonoBehaviour
             }
             index++;
         }
-
         if (owner == userId)
         {
             if (money >= image.GetComponent<Properties>().dlc[index])

@@ -6,20 +6,11 @@ public class RandomCard : MonoBehaviour
 {
     public GameObject player;
     public GameObject[] allCards;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameManager gameManager;
 
     public void GetRandomCard()
     {
+        gameManager.userId = 1;
         int cardNumber = 5;
         int[] playerCard = player.GetComponent<Movement>().playerCard;
         System.Random random = new System.Random();

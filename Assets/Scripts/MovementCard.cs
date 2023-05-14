@@ -48,7 +48,6 @@ public class MovementCard : MonoBehaviour
         {
             Destroy(item);
         }
-        GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
     }
 
     public void OnMouseOver()
