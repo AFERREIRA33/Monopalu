@@ -508,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1720512794179463868, guid: c05051655089f0a4b9c92d935786e4e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.23
+      value: 7.05
       objectReference: {fileID: 0}
     - target: {fileID: 1720512794179463868, guid: c05051655089f0a4b9c92d935786e4e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.75
+      value: -5.396
       objectReference: {fileID: 0}
     - target: {fileID: 1720512794179463868, guid: c05051655089f0a4b9c92d935786e4e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -548,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4138823528343553284, guid: c05051655089f0a4b9c92d935786e4e5, type: 3}
       propertyPath: m_Name
-      value: Queen
+      value: Ordi1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1788754815180191376, guid: c05051655089f0a4b9c92d935786e4e5, type: 3}
