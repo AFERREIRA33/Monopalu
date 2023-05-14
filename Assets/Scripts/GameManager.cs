@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
     public GameObject button;
     public GameObject button1;
     public GameObject button2;
+    public TextMeshProUGUI moneyplayer1;
+    public TextMeshProUGUI moneyplayer2;
+    public TextMeshProUGUI moneyplayer3;
+    public TextMeshProUGUI moneyplayer4;
     public int userId;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +28,14 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectsWithTag("Player");
         Deck();
         
+    }
+
+    private void Update()
+    {
+        moneyplayer1.text = "Money player 1: " + Player[0].GetComponent<Money>().money.ToString();
+        moneyplayer2.text = "Money player 2: " + Player[1].GetComponent<Money>().money.ToString();
+        moneyplayer3.text = "Money player 3: " + Player[2].GetComponent<Money>().money.ToString();
+        moneyplayer4.text = "Money player 4: " + Player[3].GetComponent<Money>().money.ToString();
     }
 
     public void Deck()
