@@ -34,7 +34,6 @@ public class Lucky : MonoBehaviour
             () => WorldCupLoL(),
             () => Smash(),
             () => Dividend(),
-            () => ExitJail(),
             () => LuckyBack(),
             () => LuckyForward(),
             () => GoJail(),
@@ -64,7 +63,7 @@ public class Lucky : MonoBehaviour
     }
 
     // Update is called once per frame
-    void juif()
+    void Update()
     {
         if (Input.GetKeyDown("r"))
         {
@@ -107,6 +106,7 @@ public class Lucky : MonoBehaviour
     public void GoJail()
     {
         Player[userId].transform.position = boxs[10].transform.position;
+        GetComponent<GameManager>().ChangeAction();
     }
 
     public void WarpTrain()
@@ -158,12 +158,6 @@ public class Lucky : MonoBehaviour
     {
         Player[userId].GetComponent<Money>().AddMoney(5000);
     }
-
-    public void ExitJail()
-    {
-        Debug.Log("Faut ajoutez le syst�me");
-    }
-
     public void Penalty()
     {
         Player[userId].GetComponent<Money>().Substract(1500);

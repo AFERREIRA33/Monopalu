@@ -30,7 +30,6 @@ public class Chest : MonoBehaviour
             () => ErrorBank(),
             () => Doc(),
             () => SellConsol(),
-            () => ExitJail(),
             () => GoJail(),
             () => Income(),
             () => ChestForward(),
@@ -91,8 +90,9 @@ public class Chest : MonoBehaviour
 
     public void GoJail()
     {
-        
+
         Player[userId].transform.position = boxs[10].transform.position;
+        GetComponent<GameManager>().ChangeAction();
     }
     
     public void WarpStart()
@@ -112,17 +112,25 @@ public class Chest : MonoBehaviour
     {
         Player[userId].GetComponent<Money>().AddMoney(5000);
     }
-    public void ExitJail()
-    {
-        Debug.Log("Faut ajoutez le systéme");
-    }
     public void Income()
     {
         Player[userId].GetComponent<Money>().AddMoney(10000);
     }
     public void Birthday()
     {
-        Debug.Log("Faut ajoutez le systéme");
+        int index = 0;
+        foreach (var item in Player)
+        {
+            index++;
+            if (item == Player[userId])
+            {
+                Player[userId].GetComponent<Money>().AddMoney(3000);
+            }
+            else
+            {
+                Player[index].GetComponent<Money>().Substract(1000);
+            }
+        }
     }
     public void Contribution()
     {

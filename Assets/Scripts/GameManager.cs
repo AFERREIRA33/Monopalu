@@ -41,10 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeAction()
     {
-        button.SetActive(false);
-        button1.SetActive(false);
-        button2.SetActive(false);
-        Debug.Log(userId);
+        
         if (Player[0].GetComponent<Movement>().isjail && userId == 1)
         {
             Debug.Log("Oh non je suis en prison");
@@ -89,6 +86,10 @@ public class GameManager : MonoBehaviour
                 Player[0].GetComponent<Movement>().isjail = false;
             }
         }
+        button.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        Debug.Log(userId);
         if (userId > 3)
         {
             GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
