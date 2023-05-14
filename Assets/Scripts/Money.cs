@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Money : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Money : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public void Substract(int moneysubstract)

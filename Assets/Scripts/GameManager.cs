@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dataBase.GetComponent<SqliteTest>().DeleteElement("Box", "");
         boxs = GameObject.FindGameObjectsWithTag("Case");
         Player = GameObject.FindGameObjectWithTag("Player");
         Deck();

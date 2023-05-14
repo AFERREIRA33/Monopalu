@@ -28,11 +28,13 @@ public class SqliteTest : MonoBehaviour
         // Open connection
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
+
         // Create table
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS User (user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name TEXT,  user_score integer,  user_best_score integer)");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Card (card_id integer PRIMARY KEY AUTOINCREMENT, card_name TEXT, card_action TEXT, card_desc TEXT,  card_value INTEGER)");
         ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS UserCard ( user_id INTEGER, card_id INTEGER, FOREIGN KEY(user_id) REFERENCES User(user_id), FOREIGN KEY(card_id) REFERENCES Card(card_id))");
-        ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER)");
+        ExecQuery(dbcon, "CREATE TABLE IF NOT EXISTS Box ( box_id INTEGER PRIMARY KEY AUTOINCREMENT, box_owner INTEGER, box_desc TEXT, box_build INTEGER, box_value INTEGER)");
+        //ExecQuery(dbcon, "ALTER TABLE Box ADD box_value INTEGER");
         // Close connection
         //ClearTable(dbcon);
         dbcon.Close();
@@ -149,6 +151,11 @@ public class SqliteTest : MonoBehaviour
         IDbConnection dbcon = new SqliteConnection(this.connection);
         dbcon.Open();
         ExecQuery(dbcon, "DELETE FROM " + table + " " + condition);
+        string[][] testIsEmpty = Select(new string[] { "*" }, "Box");
+        if (testIsEmpty.Length < 1)
+        {
+            SetDefaultBox();
+        }
         dbcon.Close();
     }
 
@@ -234,48 +241,48 @@ public class SqliteTest : MonoBehaviour
     // Create all default case in the table "Box"
     private void SetDefaultBox()
     {
-        InsertInto("Box", new string[] { "box_id", "box_owner", "box_desc", "box_build" }, new string[][]
+        InsertInto("Box", new string[] { "box_id", "box_owner", "box_desc", "box_build", "box_value" }, new string[][]
         {
-            new string[] { "0", "0", "'Start'", "0"},
-            new string[] { "1", "0", "'1_1'", "0"},
-            new string[] { "2", "0", "'Chest_1'", "0"},
-            new string[] { "3", "0", "'1_2'", "0"},
-            new string[] { "4", "0", "'Money_1'", "0"},
-            new string[] { "5", "0", "'Train_1'", "0"},
-            new string[] { "6", "0", "'2_1'", "0"},
-            new string[] { "7", "0", "'Lucky_1'", "0"},
-            new string[] { "8", "0", "'2_2'", "0"},
-            new string[] { "9", "0", "'2_3'", "0"},
-            new string[] { "10", "0", "'Jail'", "0"},
-            new string[] { "11", "0", "'3_1'", "0"},
-            new string[] { "12", "0", "'Light_1'", "0"},
-            new string[] { "13", "0", "'3_2'", "0"},
-            new string[] { "14", "0", "'3_3'", "0"},
-            new string[] { "15", "0", "'Train_2'", "0"},
-            new string[] { "16", "0", "'4_1'", "0"},
-            new string[] { "17", "0", "'Chest2'", "0"},
-            new string[] { "18", "0", "'4_2'", "0"},
-            new string[] { "19", "0", "'4_3'", "0"},
-            new string[] { "20", "0", "'Wait'", "0"},
-            new string[] { "21", "0", "'5_1'", "0"},
-            new string[] { "22", "0", "'Lucky_2'", "0"},
-            new string[] { "23", "0", "'5_2'", "0"},
-            new string[] { "24", "0", "'5_3'", "0"},
-            new string[] { "25", "0", "'Train_3'", "0"},
-            new string[] { "26", "0", "'6_1'", "0"},
-            new string[] { "27", "0", "'6_2'", "0"},
-            new string[] { "28", "0", "'Light_2'", "0"},
-            new string[] { "29", "0", "'6_3'", "0"},
-            new string[] { "30", "0", "'Stop'", "0"},
-            new string[] { "31", "0", "'7_1'", "0"},
-            new string[] { "32", "0", "'7_2'", "0"},
-            new string[] { "33", "0", "'Chest_3'", "0"},
-            new string[] { "34", "0", "'7_3'", "0"},
-            new string[] { "35", "0", "'Train_4'", "0"},
-            new string[] { "36", "0", "'Lucky_3'", "0"},
-            new string[] { "37", "0", "'8_1'", "0"},
-            new string[] { "38", "0", "'Money_2'", "0"},
-            new string[] { "39", "0", "'8_2'", "0"},
+            new string[] { "0", "0", "'Start'", "0", "0"},
+            new string[] { "1", "0", "'Property'", "0", "1"},
+            new string[] { "2", "0", "'Chest'", "0", "0"},
+            new string[] { "3", "0", "'Property'", "0", "1"},
+            new string[] { "4", "0", "'Money'", "0", "0"},
+            new string[] { "5", "0", "'Train'", "0", "0"},
+            new string[] { "6", "0", "'Property'","0", "2"},
+            new string[] { "7", "0", "'Lucky'", "0", "0"},
+            new string[] { "8", "0", "'Property'", "0", "2"},
+            new string[] { "9", "0", "'Property'", "0", "2"},
+            new string[] { "10", "0", "'Jail'", "0", "0"},
+            new string[] { "11", "0", "'Property'", "0", "3"},
+            new string[] { "12", "0", "'Light'", "0", "0"},
+            new string[] { "13", "0", "'Property'", "0", "3"},
+            new string[] { "14", "0", "'Property'", "0", "3"},
+            new string[] { "15", "0", "'Train'", "0", "0"},
+            new string[] { "16", "0", "'Property'", "0", "4"},
+            new string[] { "17", "0", "'Chest'", "0", "0"},
+            new string[] { "18", "0", "'Property'", "0", "4"},
+            new string[] { "19", "0", "'Property'", "0", "4"},
+            new string[] { "20", "0", "'Wait'", "0", "0"},
+            new string[] { "21", "0", "'Property'", "0", "5"},
+            new string[] { "22", "0", "'Lucky'", "0", "0"},
+            new string[] { "23", "0", "'Property'", "0", "5"},
+            new string[] { "24", "0", "'Property'", "0", "5"},
+            new string[] { "25", "0", "'Train'", "0", "0"},
+            new string[] { "26", "0", "'Property'", "0", "6"},
+            new string[] { "27", "0", "'Property'", "0", "6"},
+            new string[] { "28", "0", "'Light'", "0", "0"},
+            new string[] { "29", "0", "'Property'", "0", "6"},
+            new string[] { "30", "0", "'Stop'", "0", "0"},
+            new string[] { "31", "0", "'Property'", "0", "7"},
+            new string[] { "32", "0", "'Property'", "0", "7"},
+            new string[] { "33", "0", "'Chest'", "0", "0"},
+            new string[] { "34", "0", "'Property'", "0", "7"},
+            new string[] { "35", "0", "'Train'", "0", "0"},
+            new string[] { "36", "0", "'Lucky'", "0", "0"},
+            new string[] { "37", "0", "'Property'", "0", "8"},
+            new string[] { "38", "0", "'Money'", "0", "0"},
+            new string[] { "39", "0", "'Property'", "0", "8"},
         });
     }
 }
