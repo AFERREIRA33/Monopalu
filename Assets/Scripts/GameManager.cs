@@ -4,8 +4,9 @@ using Unity.VisualScripting;
 using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -57,60 +58,28 @@ public class GameManager : MonoBehaviour
 
     public void ChangeAction()
     {
-        
-        if (Player[0].GetComponent<Movement>().isjail && userId == 1)
-        {
-            Debug.Log("Oh non je suis en prison");
-            userId = 2;
-            prisontime++;
-            if (prisontime == 3)
-            {
-                prisontime = 0;
-                Player[0].GetComponent<Movement>().isjail = false;
-            }
-        }
-        if (Player[0].GetComponent<Movement>().isjail && userId == 2)
-        {
-            Debug.Log("L'IA 2 est en prison");
-            userId = 3;
-            prisontime++;
-            if (prisontime == 3)
-            {
-                prisontime = 0;
-                Player[0].GetComponent<Movement>().isjail = false;
-            }
-        }
-        if (Player[0].GetComponent<Movement>().isjail && userId == 3)
-        {
-            Debug.Log("L'IA 3 est en prison");
-            userId = 4;
-            prisontime++;
-            if (prisontime == 3)
-            {
-                prisontime = 0;
-                Player[0].GetComponent<Movement>().isjail = false;
-            }
-        }
-        if (Player[0].GetComponent<Movement>().isjail && userId == 4)
-        {
-            Debug.Log("L'IA 4 est en prison");
-            userId = 1;
-            prisontime++;
-            if (prisontime == 3)
-            {
-                prisontime = 0;
-                Player[0].GetComponent<Movement>().isjail = false;
-            }
-        }
         button.SetActive(false);
         button1.SetActive(false);
         button2.SetActive(false);
         oldImage.enabled = false;
         text.SetActive(false);
-        Debug.Log("user id : "+userId);
         if (userId > 3)
         {
-            GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
+            Debug.Log(prisontime);
+            if (Player[0].GetComponent<Movement>().injail)
+            {
+                userId = 2;
+                prisontime++;
+                if (prisontime == 3)
+                {
+                    prisontime = 0;
+                    Player[0].GetComponent<Movement>().injail = false;
+                }
+                ChangeAction();
+            } else
+            {
+                GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
+            }
         }
         else
         {

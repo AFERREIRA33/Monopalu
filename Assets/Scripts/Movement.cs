@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     public GameObject button2;
     public bool isAI;
     public int randomnumber;
-    public bool isjail;
+    public bool injail;
 
     public int boxIndex = 0;
     public int befor = 0;
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
         boxs = GameObject.FindGameObjectsWithTag("Case");
         player = GameObject.FindGameObjectsWithTag("Player");
         transform.position = boxs[boxIndex].transform.position;
-        isjail = false;
+        injail = false;
     }
 
     public int RandomNumber()
@@ -50,7 +50,6 @@ public class Movement : MonoBehaviour
 
     public void Move(int rollnumber)
     {
-        Debug.Log("rollnumber : " + rollnumber);
         if (boxIndex + rollnumber > 39)
         {
             befor = boxIndex - rollnumber;
@@ -61,10 +60,8 @@ public class Movement : MonoBehaviour
             }
             boxIndex = 0;
         }  
-        Debug.Log("position avant : " + boxIndex);
         boxIndex += rollnumber;
         pos = boxs[boxIndex];
-        Debug.Log("position apres : " + pos.name);
         transform.position = boxs[boxIndex].transform.position;
         if (isAI)
         {
@@ -77,7 +74,9 @@ public class Movement : MonoBehaviour
         if (pos == jail)
         {
             transform.position = boxs[10].transform.position;
-            isjail =  true;
+            pos = boxs[10];
+            boxIndex = 10;
+            injail =  true;
             button.SetActive(true);
 
         }

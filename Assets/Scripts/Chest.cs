@@ -19,6 +19,7 @@ public class Chest : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
     public int userId = 1;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,7 @@ public class Chest : MonoBehaviour
         rndNum = random.Next(0, chest.Length);
         oldImage.enabled = true;
         button.SetActive(true);
-        oldImage.sprite = spriteTable[rndNum];
+        oldImage.sprite = spriteTable[rndNum]; 
         chest[rndNum]();
         userId++;
     }
@@ -71,6 +72,12 @@ public class Chest : MonoBehaviour
         }
         index = index - 2;
         Player[userId].transform.position = boxs[index].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[index];
+        Player[userId].GetComponent<Movement>().boxIndex = index;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = index;
+        }
     }
 
     public void ChestForward()
@@ -86,19 +93,36 @@ public class Chest : MonoBehaviour
         }
         index = index + 5;
         Player[userId].transform.position = boxs[index].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[index];
+        Player[userId].GetComponent<Movement>().boxIndex = index;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = index;
+        }
     }
 
     public void GoJail()
     {
-
         Player[userId].transform.position = boxs[10].transform.position;
-        GetComponent<GameManager>().ChangeAction();
+        gameManager.GetComponent<GameManager>().ChangeAction();
+        Player[userId].GetComponent<Movement>().pos = boxs[10];
+        Player[userId].GetComponent<Movement>().boxIndex = 10;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 10;
+        }
     }
     
     public void WarpStart()
     {
         Player[userId].transform.position = boxs[0].transform.position;
         Player[userId].GetComponent<Money>().AddMoney(20000);
+        Player[userId].GetComponent<Movement>().pos = boxs[0];
+        Player[userId].GetComponent<Movement>().boxIndex = 0;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 0;
+        }
     }
     public void ErrorBank()
     {
@@ -110,6 +134,7 @@ public class Chest : MonoBehaviour
     }
     public void SellConsol()
     {
+
         Player[userId].GetComponent<Money>().AddMoney(5000);
     }
     public void Income()
@@ -121,7 +146,6 @@ public class Chest : MonoBehaviour
         int index = 0;
         foreach (var item in Player)
         {
-            index++;
             if (item == Player[userId])
             {
                 Player[userId].GetComponent<Money>().AddMoney(3000);
@@ -130,6 +154,7 @@ public class Chest : MonoBehaviour
             {
                 Player[index].GetComponent<Money>().Substract(1000);
             }
+            index++;
         }
     }
     public void Contribution()

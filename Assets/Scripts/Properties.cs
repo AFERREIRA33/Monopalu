@@ -89,7 +89,6 @@ public class Properties : MonoBehaviour
         string[][] dbalreadyown = db.GetComponent<SqliteTest>().Select(new string[] { "box_owner" }, "Box", $" WHERE box_id = {globalindex}");
         if (dbalreadyown[0][0] == userId.ToString() && numberpropeties <= 5 && player[userId].GetComponent<Money>().GetMoney() >= dlc[index])
         {
-            Debug.Log("titi");
             db.GetComponent<SqliteTest>().ModifyElement("Box", new string[] { "box_build" }, new string[] { $"{ numberpropeties }" }, $" WHERE box_id = {globalindex}");
             player[userId].GetComponent<Money>().Substract(dlc[index]);
             numberpropeties++;

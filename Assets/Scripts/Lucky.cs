@@ -84,6 +84,12 @@ public class Lucky : MonoBehaviour
         }
         index = index - 3;
         Player[userId].transform.position = boxs[index].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[index];
+        Player[userId].GetComponent<Movement>().boxIndex = index;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = index;
+        }
     }
 
     public void LuckyForward()
@@ -101,12 +107,24 @@ public class Lucky : MonoBehaviour
         }
         index = index + 3;
         Player[userId].transform.position = boxs[index].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[index];
+        Player[userId].GetComponent<Movement>().boxIndex = index;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = index;
+        }
     }
 
     public void GoJail()
     {
         Player[userId].transform.position = boxs[10].transform.position;
         GetComponent<GameManager>().ChangeAction();
+        Player[userId].GetComponent<Movement>().pos = boxs[10];
+        Player[userId].GetComponent<Movement>().boxIndex = 10;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 10;
+        }
     }
 
     public void WarpTrain()
@@ -119,6 +137,12 @@ public class Lucky : MonoBehaviour
         {
             Player[userId].transform.position = boxs[36].transform.position;
             Player[userId].GetComponent<IA>().pos = 36;
+            Player[userId].GetComponent<Movement>().pos = boxs[36];
+            Player[userId].GetComponent<Movement>().boxIndex = 36;
+            if (Player[userId].GetComponent<Movement>().isAI)
+            {
+                Player[userId].GetComponent<IA>().pos = 36;
+            }
         }
 
     }
@@ -126,22 +150,47 @@ public class Lucky : MonoBehaviour
     public void WarpCivilization()
     {
         Player[userId].transform.position = boxs[11].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[11];
+        Player[userId].GetComponent<Movement>().boxIndex = 11;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 11;
+        }
     }
 
     public void WarpZelda()
     {
         Player[userId].transform.position = boxs[24].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[24];
+        Player[userId].GetComponent<Movement>().boxIndex = 24;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 24;
+        }
     }
 
     public void WarpStart()
     {
         Player[userId].transform.position = boxs[0].transform.position;
         Player[userId].GetComponent<Money>().AddMoney(20000);
+        Player[userId].GetComponent<Movement>().pos = boxs[0];
+        Player[userId].GetComponent<Movement>().boxIndex = 0;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 0;
+        }
     }
 
     public void WarpKH()
     {
         Player[userId].transform.position = boxs[39].transform.position;
+        Player[userId].GetComponent<Movement>().pos = boxs[39];
+        Player[userId].GetComponent<Movement>().boxIndex = 39;
+        if (Player[userId].GetComponent<Movement>().isAI)
+        {
+            Player[userId].GetComponent<IA>().pos = 39;
+        }
+
     }
 
     public void WorldCupLoL()
