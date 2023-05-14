@@ -56,6 +56,39 @@ public class GameManager : MonoBehaviour
                 Player[0].GetComponent<Movement>().isjail = false;
             }
         }
+        if (Player[0].GetComponent<Movement>().isjail && userId == 2)
+        {
+            Debug.Log("L'IA 2 est en prison");
+            userId = 3;
+            prisontime++;
+            if (prisontime == 3)
+            {
+                prisontime = 0;
+                Player[0].GetComponent<Movement>().isjail = false;
+            }
+        }
+        if (Player[0].GetComponent<Movement>().isjail && userId == 3)
+        {
+            Debug.Log("L'IA 3 est en prison");
+            userId = 4;
+            prisontime++;
+            if (prisontime == 3)
+            {
+                prisontime = 0;
+                Player[0].GetComponent<Movement>().isjail = false;
+            }
+        }
+        if (Player[0].GetComponent<Movement>().isjail && userId == 4)
+        {
+            Debug.Log("L'IA 4 est en prison");
+            userId = 1;
+            prisontime++;
+            if (prisontime == 3)
+            {
+                prisontime = 0;
+                Player[0].GetComponent<Movement>().isjail = false;
+            }
+        }
         if (userId > 3)
         {
             GameObject.FindGameObjectWithTag("random").GetComponent<RandomCard>().GetRandomCard();
